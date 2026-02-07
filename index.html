@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+<title>ToolRaja – Discover the Internet Like an App</title>
+
+<style>
+/* ===== RESET ===== */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+}
+
+html,body{
+  width:100%;
+  height:100%;
+}
+
+body{
+  background:#ffffff;
+  color:#111;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ===== HEADER ===== */
+.app-header{
+  position:sticky;
+  top:0;
+  z-index:999;
+  height:58px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 16px;
+  background:rgba(255,255,255,.94);
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.menu-btn{
+  background:none;
+  border:none;
+  font-size:26px;
+  color:#111;
+}
+
+.logo{
+  font-size:18px;
+  font-weight:800;
+}
+
+/* ===== MAIN ===== */
+main{
+  padding:14px 10px 90px;
+}
+
+.section{
+  margin-bottom:28px;
+}
+
+.section-title{
+  font-size:18px;
+  font-weight:800;
+  margin:14px 6px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  color:#222;
+}
+
+/* ===== GRID ===== */
+.card-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+}
+
+/* ===== CARD BASE ===== */
+.glass-card{
+  border-radius:22px;
+  min-height:100px;
+  padding:14px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  text-decoration:none;
+  color:#111;
+  box-shadow:
+    0 10px 22px rgba(0,0,0,.14),
+    0 2px 6px rgba(0,0,0,.08);
+  transition:
+    transform .18s ease,
+    box-shadow .18s ease;
+}
+
+.glass-card:active{
+  transform:scale(.965);
+  box-shadow:
+    0 6px 14px rgba(0,0,0,.16);
+}
+
+.card-icon{
+  font-size:24px;
+}
+
+.card-title{
+  font-size:13px;
+  font-weight:800;
+  line-height:1.25;
+}
+
+/* ===== VIBRANT COLOR CARDS + BORDER ===== */
+.c1{
+  background:linear-gradient(135deg,#ffb3ba,#ffd6a5);
+  border:1px solid #ff6f6f;
+}
+.c2{
+  background:linear-gradient(135deg,#9ad9ff,#b0c9ff);
+  border:1px solid #4fa3ff;
+}
+.c3{
+  background:linear-gradient(135deg,#c7b7ff,#9df3c4);
+  border:1px solid #7a6cff;
+}
+.c4{
+  background:linear-gradient(135deg,#ff9a8b,#ff6fb1);
+  border:1px solid #ff4d88;
+}
+.c5{
+  background:linear-gradient(135deg,#ffd166,#ffe066);
+  border:1px solid #f4b400;
+}
+.c6{
+  background:linear-gradient(135deg,#b7f0a1,#d4f7a7);
+  border:1px solid #6bcf63;
+}
+.c7{
+  background:linear-gradient(135deg,#b8b0e3,#c7d2ff);
+  border:1px solid #7b6fd6;
+}
+.c8{
+  background:linear-gradient(135deg,#7de2d1,#b2f7ef);
+  border:1px solid #26c6b8;
+}
+.c9{
+  background:linear-gradient(135deg,#ff9f68,#ff6fae);
+  border:1px solid #ff5a5a;
+}
+
+/* ===== DRAWER ===== */
+.drawer{
+  position:fixed;
+  top:0;
+  left:-280px;
+  width:280px;
+  height:100%;
+  background:#ffffff;
+  box-shadow:8px 0 22px rgba(0,0,0,.18);
+  z-index:1200;
+  transition:.3s ease;
+  padding-top:60px;
+}
+
+.drawer.active{left:0;}
+
+.drawer a{
+  display:block;
+  padding:14px 22px;
+  text-decoration:none;
+  color:#111;
+  font-size:14px;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.drawer-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.4);
+  z-index:1100;
+  display:none;
+}
+
+.drawer-overlay.active{display:block;}
+
+/* ===== BOTTOM NAV ===== */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:64px;
+  background:rgba(255,255,255,.96);
+  border-top:1px solid rgba(0,0,0,.08);
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:999;
+}
+
+.bottom-nav a{
+  text-decoration:none;
+  color:#111;
+  font-size:11px;
+  text-align:center;
+}
+
+.bottom-nav span{
+  display:block;
+  font-size:20px;
+}
+
+/* ===== DESKTOP ===== */
+@media(min-width:768px){
+  .card-grid{
+    grid-template-columns:repeat(6,1fr);
+  }
+  .bottom-nav{
+    display:none;
+  }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="app-header">
+  <button class="menu-btn">☰</button>
+  <div class="logo">ToolRaja</div>
+  <div></div>
+</header>
+
+<main>
+
+  <!-- 1️⃣ Education & Learning Hub -->
+  <section class="section">
+    <div class="section-title">📚 Education & Learning Hub</div>
+    <div class="card-grid">
+      <a class="glass-card c1"><div class="card-icon">🎓</div><div class="card-title">Online Learning</div></a>
+      <a class="glass-card c2"><div class="card-icon">📜</div><div class="card-title">Courses</div></a>
+      <a class="glass-card c3"><div class="card-icon">🏫</div><div class="card-title">School / College</div></a>
+      <a class="glass-card c4"><div class="card-icon">📝</div><div class="card-title">Exams & Prep</div></a>
+      <a class="glass-card c5"><div class="card-icon">🛠</div><div class="card-title">Skill Learning</div></a>
+      <a class="glass-card c6"><div class="card-icon">📊</div><div class="card-title">Study Tools</div></a>
+      <a class="glass-card c7"><div class="card-icon">📚</div><div class="card-title">Libraries</div></a>
+      <a class="glass-card c8"><div class="card-icon">📂</div><div class="card-title">PDF Resources</div></a>
+      <a class="glass-card c9"><div class="card-icon">🧠</div><div class="card-title">Knowledge Hub</div></a>
+    </div>
+  </section>
+
+  <!-- 2️⃣ Art, Craft & Creative World -->
+  <section class="section">
+    <div class="section-title">🎨 Art, Craft & Creative World</div>
+    <div class="card-grid">
+      <a class="glass-card c2"><div class="card-icon">🖌</div><div class="card-title">Digital Art</div></a>
+      <a class="glass-card c3"><div class="card-icon">🧩</div><div class="card-title">Graphic Design</div></a>
+      <a class="glass-card c4"><div class="card-icon">📖</div><div class="card-title">Art Tutorials</div></a>
+      <a class="glass-card c5"><div class="card-icon">🔤</div><div class="card-title">Fonts & Icons</div></a>
+      <a class="glass-card c6"><div class="card-icon">🖼</div><div class="card-title">Illustration</div></a>
+      <a class="glass-card c7"><div class="card-icon">💡</div><div class="card-title">Inspiration</div></a>
+      <a class="glass-card c8"><div class="card-icon">🎭</div><div class="card-title">Concept Art</div></a>
+      <a class="glass-card c9"><div class="card-icon">📐</div><div class="card-title">UI Assets</div></a>
+      <a class="glass-card c1"><div class="card-icon">🎨</div><div class="card-title">Creative Hub</div></a>
+    </div>
+  </section>
+
+  <!-- 3️⃣ Business, Branding & Growth -->
+  <section class="section">
+    <div class="section-title">💼 Business, Branding & Growth</div>
+    <div class="card-grid">
+      <a class="glass-card c4"><div class="card-icon">🏢</div><div class="card-title">Business Tools</div></a>
+      <a class="glass-card c5"><div class="card-icon">🏷</div><div class="card-title">Branding</div></a>
+      <a class="glass-card c6"><div class="card-icon">📈</div><div class="card-title">Marketing</div></a>
+      <a class="glass-card c7"><div class="card-icon">👥</div><div class="card-title">CRM Tools</div></a>
+      <a class="glass-card c8"><div class="card-icon">🚀</div><div class="card-title">Startups</div></a>
+      <a class="glass-card c9"><div class="card-icon">⚙️</div><div class="card-title">Automation</div></a>
+      <a class="glass-card c1"><div class="card-icon">🗂</div><div class="card-title">Productivity</div></a>
+      <a class="glass-card c2"><div class="card-icon">📊</div><div class="card-title">Analytics</div></a>
+      <a class="glass-card c3"><div class="card-icon">🤝</div><div class="card-title">Growth Hub</div></a>
+    </div>
+  </section>
+
+  <!-- 4️⃣ Fashion, Lifestyle & Living -->
+  <section class="section">
+    <div class="section-title">👗 Fashion, Lifestyle & Living</div>
+    <div class="card-grid">
+      <a class="glass-card c6"><div class="card-icon">👕</div><div class="card-title">Fashion</div></a>
+      <a class="glass-card c7"><div class="card-icon">💄</div><div class="card-title">Beauty</div></a>
+      <a class="glass-card c8"><div class="card-icon">📱</div><div class="card-title">Lifestyle Apps</div></a>
+      <a class="glass-card c9"><div class="card-icon">🏡</div><div class="card-title">Home & Living</div></a>
+      <a class="glass-card c1"><div class="card-icon">🧘</div><div class="card-title">Wellness</div></a>
+      <a class="glass-card c2"><div class="card-icon">🔥</div><div class="card-title">Trends</div></a>
+      <a class="glass-card c3"><div class="card-icon">🧥</div><div class="card-title">Style Guides</div></a>
+      <a class="glass-card c4"><div class="card-icon">🌿</div><div class="card-title">Daily Living</div></a>
+      <a class="glass-card c5"><div class="card-icon">💎</div><div class="card-title">Lifestyle Hub</div></a>
+    </div>
+  </section>
+
+  <!-- 5️⃣ News, Media & Broadcasting -->
+  <section class="section">
+    <div class="section-title">📰 News, Media & Broadcasting</div>
+    <div class="card-grid">
+      <a class="glass-card c1"><div class="card-icon">🗞</div><div class="card-title">News Portals</div></a>
+      <a class="glass-card c2"><div class="card-icon">📺</div><div class="card-title">Media Platforms</div></a>
+      <a class="glass-card c3"><div class="card-icon">🎙</div><div class="card-title">Broadcasting</div></a>
+      <a class="glass-card c4"><div class="card-icon">✍️</div><div class="card-title">Publishing</div></a>
+      <a class="glass-card c5"><div class="card-icon">🧾</div><div class="card-title">Journalism</div></a>
+      <a class="glass-card c6"><div class="card-icon">📡</div><div class="card-title">Reporting</div></a>
+      <a class="glass-card c7"><div class="card-icon">🌍</div><div class="card-title">Global Media</div></a>
+      <a class="glass-card c8"><div class="card-icon">📢</div><div class="card-title">Digital News</div></a>
+      <a class="glass-card c9"><div class="card-icon">🎬</div><div class="card-title">Media Hub</div></a>
+    </div>
+  </section>
+
+  <!-- 6️⃣ Finance & Digital Economy -->
+  <section class="section">
+    <div class="section-title">💰 Finance & Digital Economy</div>
+    <div class="card-grid">
+      <a class="glass-card c4"><div class="card-icon">🏦</div><div class="card-title">FinTech</div></a>
+      <a class="glass-card c5"><div class="card-icon">📘</div><div class="card-title">Finance Guides</div></a>
+      <a class="glass-card c6"><div class="card-icon">📉</div><div class="card-title">Stocks</div></a>
+      <a class="glass-card c7"><div class="card-icon">⛓</div><div class="card-title">Crypto (Edu)</div></a>
+      <a class="glass-card c8"><div class="card-icon">💳</div><div class="card-title">Payments</div></a>
+      <a class="glass-card c9"><div class="card-icon">🏛</div><div class="card-title">Banking</div></a>
+      <a class="glass-card c1"><div class="card-icon">🌐</div><div class="card-title">Digital Economy</div></a>
+      <a class="glass-card c2"><div class="card-icon">📊</div><div class="card-title">Market Insight</div></a>
+      <a class="glass-card c3"><div class="card-icon">💡</div><div class="card-title">Finance Hub</div></a>
+    </div>
+  </section>
+
+  <!-- 7️⃣ Web3, Crypto & Blockchain -->
+  <section class="section">
+    <div class="section-title">🌐 Web3, Crypto & Blockchain</div>
+    <div class="card-grid">
+      <a class="glass-card c7"><div class="card-icon">🌐</div><div class="card-title">Web3 Platforms</div></a>
+      <a class="glass-card c8"><div class="card-icon">⛓</div><div class="card-title">Blockchain Tech</div></a>
+      <a class="glass-card c9"><div class="card-icon">🪙</div><div class="card-title">Crypto Edu</div></a>
+      <a class="glass-card c1"><div class="card-icon">🖼</div><div class="card-title">NFTs</div></a>
+      <a class="glass-card c2"><div class="card-icon">🏛</div><div class="card-title">DAOs</div></a>
+      <a class="glass-card c3"><div class="card-icon">📱</div><div class="card-title">DApps</div></a>
+      <a class="glass-card c4"><div class="card-icon">🔐</div><div class="card-title">Wallets</div></a>
+      <a class="glass-card c5"><div class="card-icon">⚙️</div><div class="card-title">Web3 Tools</div></a>
+      <a class="glass-card c6"><div class="card-icon">🚀</div><div class="card-title">Web3 Hub</div></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="bottom-nav">
+  <a><span>🏠</span>Home</a>
+  <a><span>🧭</span>Explore</a>
+  <a><span>⭐</span>Top</a>
+  <a><span>ℹ️</span>About</a>
+</footer>
+
+</body>
+</html>
