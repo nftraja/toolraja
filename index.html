@@ -1,32 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ToolRaja</title>
-<meta name="description" content="ToolRaja - Curated directory of digital tools.">
 
-<link rel="stylesheet" href="style.css">
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:#f5f7fb;
+}
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  background:#ffffff;
+  box-shadow:0 2px 10px rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+}
+h1{
+  margin:0;
+}
+.search{
+  padding:8px 12px;
+  width:200px;
+}
+.container{
+  padding:20px;
+}
+.category-title{
+  margin:30px 0 15px;
+  font-size:22px;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+  gap:15px;
+}
+.card{
+  background:#fff;
+  padding:15px;
+  border-radius:10px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+}
+.card h3{
+  margin:0 0 8px;
+  font-size:16px;
+}
+.badge{
+  font-size:12px;
+  padding:4px 8px;
+  border-radius:6px;
+  background:#eee;
+  display:inline-block;
+  margin-bottom:8px;
+}
+.card a{
+  display:inline-block;
+  margin-top:10px;
+  padding:6px 10px;
+  background:#111;
+  color:#fff;
+  text-decoration:none;
+  border-radius:6px;
+  font-size:13px;
+}
+</style>
 </head>
 
 <body>
 
-<header class="header">
-  <div class="brand">ToolRaja</div>
-
-  <div class="header-right">
-    <input type="text" id="searchInput" placeholder="Search tools...">
-    <button id="themeToggle">☀️</button>
-  </div>
+<header>
+  <h1>ToolRaja</h1>
+  <input class="search" placeholder="Search tools..." oninput="searchTools(this.value)" />
 </header>
 
-<nav id="categoryBar" class="category-bar"></nav>
+<div class="container" id="app"></div>
 
-<main>
-  <div id="toolsGrid" class="tools-grid"></div>
-</main>
+<script>
 
-<script src="app.js" defer></script>
+const tools = [
+
+/* ========= AI TOOLS (15) ========= */
+
+{name:"ChatGPT",category:"AI Tools",type:"Freemium"},
+{name:"Claude",category:"AI Tools",type:"Freemium"},
+{name:"Gemini",category:"AI Tools",type:"Free"},
+{name:"Perplexity AI",category:"AI Tools",type:"Freemium"},
+{name:"Microsoft Copilot",category:"AI Tools",type:"Freemium"},
+{name:"Midjourney",category:"AI Tools",type:"Paid"},
+{name:"Leonardo AI",category:"AI Tools",type:"Freemium"},
+{name:"Runway",category:"AI Tools",type:"Freemium"},
+{name:"ElevenLabs",category:"AI Tools",type:"Freemium"},
+{name:"Jasper",category:"AI Tools",type:"Paid"},
+{name:"Copy.ai",category:"AI Tools",type:"Freemium"},
+{name:"DeepL",category:"AI Tools",type:"Freemium"},
+{name:"Synthesia",category:"AI Tools",type:"Paid"},
+{name:"Character AI",category:"AI Tools",type:"Freemium"},
+{name:"Hugging Face",category:"AI Tools",type:"Free"},
+
+/* ========= PRODUCTIVITY (15) ========= */
+
+{name:"Notion",category:"Productivity",type:"Freemium"},
+{name:"Trello",category:"Productivity",type:"Freemium"},
+{name:"ClickUp",category:"Productivity",type:"Freemium"},
+{name:"Asana",category:"Productivity",type:"Freemium"},
+{name:"Todoist",category:"Productivity",type:"Freemium"},
+{name:"Evernote",category:"Productivity",type:"Freemium"},
+{name:"Google Keep",category:"Productivity",type:"Free"},
+{name:"Slack",category:"Productivity",type:"Freemium"},
+{name:"Zoom",category:"Productivity",type:"Freemium"},
+{name:"Calendly",category:"Productivity",type:"Freemium"},
+{name:"RescueTime",category:"Productivity",type:"Freemium"},
+{name:"Monday.com",category:"Productivity",type:"Paid"},
+{name:"Basecamp",category:"Productivity",type:"Paid"},
+{name:"Microsoft To Do",category:"Productivity",type:"Free"},
+{name:"Time Doctor",category:"Productivity",type:"Paid"}
+
+];
+
+let filtered = tools;
+
+function render(){
+  const app = document.getElementById("app");
+  const categories = [...new Set(filtered.map(t=>t.category))];
+  app.innerHTML = "";
+
+  categories.forEach(cat=>{
+    const section = document.createElement("div");
+    section.innerHTML = `
+      <div class="category-title">${cat}</div>
+      <div class="grid">
+        ${filtered.filter(t=>t.category===cat).map(t=>`
+          <div class="card">
+            <h3>${t.name}</h3>
+            <div class="badge">${t.type}</div>
+            <a href="#">Visit</a>
+          </div>
+        `).join("")}
+      </div>
+    `;
+    app.appendChild(section);
+  });
+}
+
+function searchTools(q){
+  q=q.toLowerCase();
+  filtered = tools.filter(t=>t.name.toLowerCase().includes(q));
+  render();
+}
+
+render();
+
+</script>
 
 </body>
 </html>
