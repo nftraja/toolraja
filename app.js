@@ -1,50 +1,55 @@
-const state = {
-  tools: [],
-  currentCategory: "all",
-  searchQuery: ""
-};
-
 const toolsContainer = document.getElementById("tools-container");
 const categoryContainer = document.getElementById("category-container");
 const searchInput = document.getElementById("search-input");
 
-document.addEventListener("DOMContentLoaded", async () => {
-  await loadTools();
-  renderCategories();
-  renderTools();
-  setupEvents();
-});
+let allTools = [];
+let currentCategory = "all";
+
+document.addEventListener("DOMContentLoaded", loadTools);
 
 async function loadTools() {
   const res = await fetch("tools.json");
   const data = await res.json();
-  state.tools = Object.values(data.tools);
+
+  allTools = Object.values(data.tools);
+  renderCategories();
+  renderTools();
 }
 
 function renderCategories() {
-  const categories = [
-    "all",
-    ...new Set(state.tools.map(tool => tool.category))
-  ];
+  const categories = ["all", ...new Set(allTools.map(t => t.category))];
 
-  categoryContainer.innerHTML = categories.map(cat => `
-    <button class="category-btn ${cat === "all" ? "active" : ""}" 
-      data-category="${cat}">
-      ${cat}
-    </button>
-  `).join("");
+  categoryContainer.innerHTML = categories.map(cat =>
+    `<button class="category-btn ${cat === "all" ? "active" : ""}" 
+     data-category="${cat}">
+     ${cat}
+     </button>`
+  ).join("");
+
+  categoryContainer.addEventListener("click", e => {
+    if (!e.target.classList.contains("category-btn")) return;
+
+    document.querySelectorAll(".category-btn")
+      .forEach(btn => btn.classList.remove("active"));
+
+    e.target.classList.add("active");
+    currentCategory = e.target.dataset.category;
+    renderTools();
+  });
 }
 
 function renderTools() {
-  let filtered = state.tools;
+  let filtered = allTools;
 
-  if (state.currentCategory !== "all") {
-    filtered = filtered.filter(tool => tool.category === state.currentCategory);
+  if (currentCategory !== "all") {
+    filtered = filtered.filter(t => t.category === currentCategory);
   }
 
-  if (state.searchQuery) {
-    filtered = filtered.filter(tool =>
-      tool.name.toLowerCase().includes(state.searchQuery)
+  const query = searchInput.value?.toLowerCase() || "";
+  if (query) {
+    filtered = filtered.filter(t =>
+      t.name.toLowerCase().includes(query) ||
+      t.description.toLowerCase().includes(query)
     );
   }
 
@@ -58,21 +63,4 @@ function renderTools() {
   `).join("");
 }
 
-function setupEvents() {
-  categoryContainer.addEventListener("click", e => {
-    if (!e.target.classList.contains("category-btn")) return;
-
-    document.querySelectorAll(".category-btn")
-      .forEach(btn => btn.classList.remove("active"));
-
-    e.target.classList.add("active");
-
-    state.currentCategory = e.target.dataset.category;
-    renderTools();
-  });
-
-  searchInput.addEventListener("input", e => {
-    state.searchQuery = e.target.value.toLowerCase();
-    renderTools();
-  });
-}
+searchInput.addEventListener("input", renderTools);
