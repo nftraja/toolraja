@@ -476,12 +476,12 @@
 "link": "#"
 },
 "dev-015": {
-  "name": "Sentry",
-  "category": "developer-tools",
-  "description": "Application monitoring and error tracking platform.",
-  "pricing": "Freemium",
-  "type": "freemium",
-  "link": "#"
-}
+    "name": "Sentry",
+    "category": "developer-tools",
+    "description": "Application monitoring and error tracking platform.",
+    "pricing": "Freemium",
+    "type": "freemium",
+    "link": "#"
   }
+}
 }
