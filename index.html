@@ -2,21 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ToolRaja</title>
-  <link rel="stylesheet" href="style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
+
 <body>
 
-<header>
+<header class="header">
   <h1>ToolRaja</h1>
-  <input type="text" id="search-input" placeholder="Search tools...">
+  <div class="search-area">
+    <input id="search-input" type="text" placeholder="Search tools...">
+    <button id="theme-toggle">🌙</button>
+  </div>
 </header>
 
-<div id="category-container"></div>
+<div id="category-container" class="categories"></div>
+<div id="tools-container" class="tools-grid"></div>
 
-<div id="tools-container"></div>
+<script src="app.js?v=5" defer></script>
 
-<script src="app.js" defer></script>
 </body>
 </html>
