@@ -1,110 +1,39 @@
 {
-  "tools": [
-    {
+  "tools": {
+    "ai-001": {
       "name": "ChatGPT",
       "category": "ai-tools",
       "description": "Advanced AI assistant for writing and coding.",
       "pricing": "Freemium",
       "link": "#"
     },
-    {
+    "ai-002": {
       "name": "Claude",
       "category": "ai-tools",
       "description": "Long-form reasoning AI assistant.",
       "pricing": "Freemium",
       "link": "#"
     },
-    {
+    "ai-003": {
       "name": "Gemini",
       "category": "ai-tools",
-      "description": "Google AI assistant integrated with search.",
+      "description": "Google AI assistant.",
       "pricing": "Free",
       "link": "#"
     },
-    {
-      "name": "Perplexity AI",
-      "category": "ai-tools",
-      "description": "AI-powered answer engine with citations.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-    {
-      "name": "Midjourney",
-      "category": "ai-tools",
-      "description": "AI image generation platform.",
-      "pricing": "Paid",
-      "link": "#"
-    },
-    {
-      "name": "Leonardo AI",
-      "category": "ai-tools",
-      "description": "Creative AI art generator.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-    {
-      "name": "Runway",
-      "category": "ai-tools",
-      "description": "AI video editing and generation.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-
-    {
+    "prod-001": {
       "name": "Notion",
       "category": "productivity",
-      "description": "All-in-one workspace for notes and docs.",
+      "description": "All-in-one workspace.",
       "pricing": "Freemium",
       "link": "#"
     },
-    {
+    "prod-002": {
       "name": "Trello",
       "category": "productivity",
       "description": "Visual task management boards.",
       "pricing": "Freemium",
       "link": "#"
-    },
-    {
-      "name": "ClickUp",
-      "category": "productivity",
-      "description": "Project and workflow management.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-    {
-      "name": "Asana",
-      "category": "productivity",
-      "description": "Team collaboration platform.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-    {
-      "name": "Todoist",
-      "category": "productivity",
-      "description": "Simple and powerful task manager.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-    {
-      "name": "Evernote",
-      "category": "productivity",
-      "description": "Note-taking and organization tool.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-    {
-      "name": "Slack",
-      "category": "productivity",
-      "description": "Team messaging and communication.",
-      "pricing": "Freemium",
-      "link": "#"
-    },
-    {
-      "name": "Calendly",
-      "category": "productivity",
-      "description": "Automated meeting scheduling tool.",
-      "pricing": "Freemium",
-      "link": "#"
     }
-  ]
+  }
 }
