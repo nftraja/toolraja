@@ -1,1 +1,487 @@
+{
+  "tools": {
+    "ai-001": {
+      "name": "ChatGPT",
+      "category": "ai-tools",
+      "description": "Advanced AI assistant for writing, coding and research.",
+      "pricing": "Freemium",
+      "type": "freemium",
+      "link": "#"
+    },
+    "ai-002": {
+      "name": "Claude",
+      "category": "ai-tools",
+      "description": "Long-form reasoning AI assistant for deep analysis.",
+      "pricing": "Freemium",
+      "type": "freemium",
+      "link": "#"
+    },
+    "ai-003": {
+      "name": "Gemini",
+      "category": "ai-tools",
+      "description": "Google AI assistant integrated with search and productivity tools.",
+      "pricing": "Free",
+      "type": "free",
+      "link": "#"
+    },
+"ai-004": {
+"name": "Perplexity AI",
+"category": "ai-tools",
+"description": "AI-powered answer engine with citations.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-005": {
+"name": "Microsoft Copilot",
+"category": "ai-tools",
+"description": "AI assistant integrated across Microsoft apps.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-006": {
+"name": "Midjourney",
+"category": "ai-tools",
+"description": "AI image generation for creative visuals.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"ai-007": {
+"name": "Leonardo AI",
+"category": "ai-tools",
+"description": "AI art generator for creators.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-008": {
+"name": "Runway",
+"category": "ai-tools",
+"description": "AI video editing and generation platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-009": {
+"name": "ElevenLabs",
+"category": "ai-tools",
+"description": "AI voice generation and cloning tool.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-010": {
+"name": "Jasper",
+"category": "ai-tools",
+"description": "AI writing assistant for businesses.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"ai-011": {
+"name": "Copy.ai",
+"category": "ai-tools",
+"description": "AI copywriting assistant for marketing.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-012": {
+"name": "DeepL",
+"category": "ai-tools",
+"description": "High-accuracy AI translation tool.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-013": {
+"name": "Synthesia",
+"category": "ai-tools",
+"description": "AI avatar video creation platform.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"ai-014": {
+"name": "Character AI",
+"category": "ai-tools",
+"description": "Create and chat with AI characters.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"ai-015": {
+"name": "Hugging Face",
+"category": "ai-tools",
+"description": "Open-source AI models and experiments platform.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
 
+"prod-001": {
+"name": "Notion",
+"category": "productivity",
+"description": "All-in-one workspace for notes and collaboration.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-002": {
+"name": "Trello",
+"category": "productivity",
+"description": "Visual task management using boards.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-003": {
+"name": "ClickUp",
+"category": "productivity",
+"description": "Project and task management platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-004": {
+"name": "Asana",
+"category": "productivity",
+"description": "Team collaboration and workflow tool.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-005": {
+"name": "Todoist",
+"category": "productivity",
+"description": "Powerful yet simple task manager.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-006": {
+"name": "Evernote",
+"category": "productivity",
+"description": "Note-taking and document organization tool.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-007": {
+"name": "Google Keep",
+"category": "productivity",
+"description": "Quick note and reminder app.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
+"prod-008": {
+"name": "Slack",
+"category": "productivity",
+"description": "Team messaging and communication platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-009": {
+"name": "Zoom",
+"category": "productivity",
+"description": "Video conferencing and meetings tool.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-010": {
+"name": "Calendly",
+"category": "productivity",
+"description": "Automated meeting scheduling platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-011": {
+"name": "RescueTime",
+"category": "productivity",
+"description": "Time tracking and productivity analytics.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"prod-012": {
+"name": "Monday.com",
+"category": "productivity",
+"description": "Work management software for teams.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"prod-013": {
+"name": "Basecamp",
+"category": "productivity",
+"description": "Project collaboration platform.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"prod-014": {
+"name": "Microsoft To Do",
+"category": "productivity",
+"description": "Simple daily task management tool.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
+"prod-015": {
+"name": "Time Doctor",
+"category": "productivity",
+"description": "Work time tracking and monitoring software.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+}
+
+"design-001": {
+"name": "Canva",
+"category": "design-creative",
+"description": "Online graphic design platform for social media and branding.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"design-002": {
+"name": "Figma",
+"category": "design-creative",
+"description": "Collaborative interface design and prototyping tool.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"design-003": {
+"name": "Adobe Photoshop",
+"category": "design-creative",
+"description": "Professional image editing and digital design software.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"design-004": {
+"name": "Adobe Illustrator",
+"category": "design-creative",
+"description": "Vector graphic design tool for branding and illustration.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"design-005": {
+"name": "VistaCreate",
+"category": "design-creative",
+"description": "Simple design platform for marketing visuals.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"design-006": {
+"name": "Remove.bg",
+"category": "design-creative",
+"description": "AI-powered background removal tool.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"design-007": {
+"name": "Unsplash",
+"category": "design-creative",
+"description": "Free high-resolution stock photo library.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
+"design-008": {
+"name": "Pexels",
+"category": "design-creative",
+"description": "Free stock images and videos platform.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
+"design-009": {
+"name": "Envato Elements",
+"category": "design-creative",
+"description": "Subscription marketplace for creative assets.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"design-010": {
+"name": "Creative Market",
+"category": "design-creative",
+"description": "Marketplace for fonts, templates and graphics.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"design-011": {
+"name": "Coolors",
+"category": "design-creative",
+"description": "Color palette generator for designers.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
+"design-012": {
+"name": "Framer",
+"category": "design-creative",
+"description": "Interactive website design and publishing platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"design-013": {
+"name": "Dribbble",
+"category": "design-creative",
+"description": "Creative inspiration and portfolio showcase platform.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
+"design-014": {
+"name": "Behance",
+"category": "design-creative",
+"description": "Creative portfolio platform by Adobe.",
+"pricing": "Free",
+"type": "free",
+"link": "#"
+},
+"design-015": {
+"name": "Placeit",
+"category": "design-creative",
+"description": "Online mockup and logo creation tool.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+
+"dev-001": {
+"name": "GitHub",
+"category": "developer-tools",
+"description": "Code hosting and version control platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-002": {
+"name": "GitLab",
+"category": "developer-tools",
+"description": "DevOps lifecycle and CI/CD platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-003": {
+"name": "Vercel",
+"category": "developer-tools",
+"description": "Frontend hosting platform for modern apps.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-004": {
+"name": "Netlify",
+"category": "developer-tools",
+"description": "Serverless hosting and deployment platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-005": {
+"name": "Postman",
+"category": "developer-tools",
+"description": "API development and testing environment.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-006": {
+"name": "Docker",
+"category": "developer-tools",
+"description": "Containerization platform for application deployment.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-007": {
+"name": "Firebase",
+"category": "developer-tools",
+"description": "Backend-as-a-service platform by Google.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-008": {
+"name": "Supabase",
+"category": "developer-tools",
+"description": "Open-source backend alternative to Firebase.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-009": {
+"name": "DigitalOcean",
+"category": "developer-tools",
+"description": "Cloud infrastructure platform for developers.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"dev-010": {
+"name": "AWS",
+"category": "developer-tools",
+"description": "Amazon cloud computing services.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"dev-011": {
+"name": "Cloudflare",
+"category": "developer-tools",
+"description": "CDN, DNS and security performance platform.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-012": {
+"name": "Heroku",
+"category": "developer-tools",
+"description": "Cloud application deployment platform.",
+"pricing": "Paid",
+"type": "paid",
+"link": "#"
+},
+"dev-013": {
+"name": "CodeSandbox",
+"category": "developer-tools",
+"description": "Online code editor and development sandbox.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-014": {
+"name": "StackBlitz",
+"category": "developer-tools",
+"description": "Instant browser-based development environment.",
+"pricing": "Freemium",
+"type": "freemium",
+"link": "#"
+},
+"dev-015": {
+  "name": "Sentry",
+  "category": "developer-tools",
+  "description": "Application monitoring and error tracking platform.",
+  "pricing": "Freemium",
+  "type": "freemium",
+  "link": "#"
+}
+  }
+}
