@@ -2,85 +2,80 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 body {
-  background: linear-gradient(135deg, #0f172a, #111827);
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0f172a;
   color: #ffffff;
-  min-height: 100vh;
+  padding: 20px;
 }
 
-header {
-  padding: 24px;
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
-header h1 {
+.header h1 {
   font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 16px;
 }
 
-header input {
-  width: 100%;
-  padding: 12px 16px;
-  border-radius: 12px;
+.search-area {
+  display: flex;
+  gap: 10px;
+}
+
+.search-area input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
   border: none;
-  background: #1f2937;
-  color: white;
-  font-size: 15px;
   outline: none;
 }
 
-header input::placeholder {
-  color: #9ca3af;
+.search-area button {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
-#category-container {
-  padding: 10px 24px 20px;
+.categories {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
   flex-wrap: wrap;
 }
 
 .category-btn {
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 20px;
   border: none;
-  background: #1f2937;
-  color: #cbd5e1;
   cursor: pointer;
-  font-size: 14px;
-  transition: all 0.2s ease;
-}
-
-.category-btn:hover {
-  background: #334155;
+  background: #1e293b;
+  color: white;
 }
 
 .category-btn.active {
   background: #6366f1;
-  color: white;
 }
 
-#tools-container {
-  padding: 0 24px 60px;
+.tools-grid {
   display: grid;
   gap: 20px;
 }
 
 .tool-card {
-  background: rgba(30, 41, 59, 0.85);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 24px;
-  border: 1px solid rgba(255,255,255,0.05);
-  transition: all 0.3s ease;
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 18px;
+  transition: 0.2s ease;
 }
 
 .tool-card:hover {
-  transform: translateY(-4px);
-  border: 1px solid rgba(99,102,241,0.4);
+  transform: translateY(-3px);
 }
 
 .tool-card h3 {
@@ -89,31 +84,24 @@ header input::placeholder {
 }
 
 .tool-card p {
-  color: #cbd5e1;
-  font-size: 14px;
-  line-height: 1.5;
-  margin-bottom: 16px;
+  opacity: 0.8;
+  margin-bottom: 10px;
 }
 
 .price {
-  display: inline-block;
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 12px;
-  background: rgba(99,102,241,0.15);
-  color: #a5b4fc;
-  margin-bottom: 14px;
+  font-size: 14px;
+  opacity: 0.7;
+  margin-bottom: 15px;
+  display: block;
 }
 
 .visit-btn {
   display: inline-block;
-  padding: 10px 16px;
-  border-radius: 10px;
+  padding: 8px 16px;
   background: #6366f1;
   color: white;
   text-decoration: none;
-  font-size: 14px;
-  transition: all 0.2s ease;
+  border-radius: 8px;
 }
 
 .visit-btn:hover {
