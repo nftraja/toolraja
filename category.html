@@ -59,7 +59,7 @@
 <script>
 
 const params = new URLSearchParams(window.location.search);
-const currentCategory = params.get("cat");
+let currentCategory = params.get("cat");
 
 const toolsContainer = document.getElementById("toolsContainer");
 const searchInput = document.getElementById("searchInput");
@@ -67,6 +67,23 @@ const categoryTitle = document.getElementById("categoryTitle");
 
 let allTools = [];
 
+/* ===== SLUG NORMALIZATION ===== */
+function normalizeSlug(slug) {
+  if (!slug) return "";
+
+  slug = slug.toLowerCase();
+
+  const map = {
+    "ai": "ai-tools",
+    "nocode": "no-code"
+  };
+
+  return map[slug] || slug;
+}
+
+currentCategory = normalizeSlug(currentCategory);
+
+/* ===== LOAD TOOLS ===== */
 async function loadTools() {
   try {
     const res = await fetch("tools.json");
@@ -74,10 +91,11 @@ async function loadTools() {
     renderTools();
   } catch (error) {
     toolsContainer.innerHTML =
-      "<div class='glass-card'>Error loading tools.</div>";
+      "<div class='glass-card'>Error loading tools.json</div>";
   }
 }
 
+/* ===== RENDER ===== */
 function renderTools() {
 
   if (!currentCategory) {
@@ -116,6 +134,7 @@ function renderTools() {
   `).join("");
 }
 
+/* ===== TITLE ===== */
 if (currentCategory) {
   categoryTitle.innerText =
     currentCategory.replace(/-/g, " ").toUpperCase();
@@ -126,7 +145,6 @@ searchInput.addEventListener("input", renderTools);
 loadTools();
 
 </script>
-
 <script src="app.js"></script>
 </body>
 </html>
