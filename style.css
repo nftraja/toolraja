@@ -107,13 +107,9 @@ body{
 /* ================= CAROUSEL ================= */
 
 .carousel-wrapper{
-  padding:20px 0;
-  position:relative;
-}
-
-.carousel-container{
   position:relative;
   width:100%;
+  padding:20px 0;
   overflow:hidden;
 }
 
@@ -123,7 +119,7 @@ body{
   overflow-x:auto;
   scroll-behavior:smooth;
   scrollbar-width:none;
-  padding:0 50px;   /* space for arrows */
+  padding:0 60px; /* arrow space */
 }
 
 .carousel-track::-webkit-scrollbar{
@@ -146,21 +142,21 @@ body{
   font-weight:600;
 }
 
-/* ===== ARROWS FIXED POSITION ===== */
+/* ARROWS */
 
 .carousel-btn{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:42px;
-  height:42px;
+  width:44px;
+  height:44px;
   border-radius:50%;
   border:1px solid rgba(0,255,136,.4);
   background:#111;
   color:#00ff88;
   font-size:20px;
   cursor:pointer;
-  z-index:10;
+  z-index:100;
 }
 
 .carousel-btn.left{
@@ -170,7 +166,6 @@ body{
 .carousel-btn.right{
   right:10px;
 }
-
 /* ================= TOOLS GRID ================= */
 .tools-grid{
   display:grid;
