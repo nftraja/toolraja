@@ -1,4 +1,3 @@
-/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
@@ -21,7 +20,6 @@ body{
   -webkit-overflow-scrolling:touch;
 }
 
-/* ================= HEADER ================= */
 .app-header{
   position:fixed;
   top:0;
@@ -31,7 +29,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 16px;
+  padding:0 18px;
   background:#0b0b0b;
   border-bottom:1px solid rgba(0,255,136,.25);
   z-index:1000;
@@ -50,16 +48,14 @@ body{
   font-size:18px;
 }
 
-/* ================= MAIN ================= */
 .main-content{
-  padding-top:80px;
-  padding-bottom:80px;
+  padding-top:60px;
+  padding-bottom:60px;
   width:100%;
 }
 
-/* ================= GLASS CARD ================= */
 .glass-card{
-  margin:14px;
+  margin:8px;
   padding:20px;
   border-radius:18px;
   border:1px solid rgba(0,255,136,.25);
@@ -71,12 +67,11 @@ body{
   text-align:center;
 }
 
-/* ================= QUICK GRID ================= */
 .quick-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  padding:14px;
+  gap:8px;
+  padding:12px;
 }
 
 .quick-card{
@@ -104,12 +99,10 @@ body{
   margin-bottom:8px;
 }
 
-/* ================= CAROUSEL ================= */
-
 .carousel-wrapper{
   position:relative;
   width:100%;
-  padding:20px 0;
+  padding:10px 0;
   overflow:hidden;
 }
 
@@ -119,7 +112,7 @@ body{
   overflow-x:auto;
   scroll-behavior:smooth;
   scrollbar-width:none;
-  padding:0 60px; /* arrow space */
+  padding:0 40px; /* arrow space */
 }
 
 .carousel-track::-webkit-scrollbar{
@@ -127,7 +120,7 @@ body{
 }
 
 .carousel-card{
-  flex:0 0 220px;
+  flex:0 0 200px;
   height:130px;
   border-radius:20px;
   border:1px solid rgba(0,255,136,.25);
@@ -141,8 +134,6 @@ body{
   font-size:16px;
   font-weight:600;
 }
-
-/* ARROWS */
 
 .carousel-btn{
   position:absolute;
@@ -166,12 +157,12 @@ body{
 .carousel-btn.right{
   right:10px;
 }
-/* ================= TOOLS GRID ================= */
+
 .tools-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:16px;
-  padding:16px;
+  gap:10px;
+  padding:12px;
 }
 
 .tool-card{
@@ -187,14 +178,14 @@ body{
 
 .tool-card h3{
   font-size:15px;
-  margin-bottom:8px;
+  margin-bottom:6px;
   color:#00ff88;
 }
 
 .tool-card p{
   font-size:12px;
   opacity:.85;
-  margin-bottom:12px;
+  margin-bottom:10px;
 }
 
 .visit-btn{
@@ -209,7 +200,6 @@ body{
   font-weight:600;
 }
 
-/* ================= DRAWER ================= */
 .drawer{
   position:fixed;
   top:0;
@@ -219,7 +209,7 @@ body{
   background:#0f0f0f;
   border-right:1px solid rgba(0,255,136,.3);
   transition:.3s ease;
-  padding-top:70px;
+  padding-top:20px;
   z-index:2000;
   overflow-y:auto;
 }
@@ -230,10 +220,10 @@ body{
 
 .drawer a{
   display:block;
-  padding:14px 20px;
+  padding:12px 15px;
   color:#00ff88;
   text-decoration:none;
-  font-size:14px;
+  font-size:12px;
   border-bottom:1px solid rgba(255,255,255,.05);
 }
 
@@ -249,7 +239,6 @@ body{
   display:block;
 }
 
-/* ================= SEARCH ================= */
 .search-input{
   width:100%;
   padding:12px;
@@ -259,7 +248,6 @@ body{
   color:#ffffff;
 }
 
-/* ================= SMALL DEVICES ================= */
 @media(max-width:360px){
   .quick-card{
     font-size:12px;
