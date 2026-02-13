@@ -50,7 +50,7 @@ body{
 
 .main-content{
   padding-top:60px;
-  padding-bottom:30px;
+  padding-bottom:60px;
   width:100%;
 }
 
@@ -85,7 +85,7 @@ body{
   justify-content:center;
   text-decoration:none;
   color:#00ff88;
-  font-size:13px; /* text size */
+  font-size:13px; 
   font-weight:500;
   transition:.2s ease;
 }
@@ -95,7 +95,7 @@ body{
 }
 
 .quick-card span{
-  font-size:42px !important;   /* force emoji size */
+  font-size:42px !important;  
   line-height:1;
   margin-bottom:8px;
   display:block;
@@ -222,10 +222,10 @@ body{
 
 .drawer a{
   display:block;
-  padding:12px 20px;
+  padding:10px 20px;
   color:#00ff88;
   text-decoration:none;
-  font-size:14px;
+  font-size:14.5px;
   border-bottom:1px solid rgba(255,255,255,.05);
 }
 
@@ -279,7 +279,7 @@ body{
 }
 
 .main-content{
-  padding-bottom:90px !important;
+  padding-bottom:70px !important;
 }
 
 @media(max-width:360px){
