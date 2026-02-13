@@ -6,13 +6,7 @@
 <title>ToolRaja – Smart Digital Tools Directory</title>
 <meta name="description" content="Discover curated AI tools, SaaS platforms, developer stacks and digital resources.">
 <link rel="stylesheet" href="style.css">
-<script>
-document.addEventListener('gesturestart', function (e) {
-  e.preventDefault();
-});
-</script>
 </head>
-
 <body>
 
 <div class="drawer-overlay" id="overlay"></div>
@@ -29,17 +23,6 @@ document.addEventListener('gesturestart', function (e) {
   <a href="category.html?cat=social">📱 Social</a>
   <a href="category.html?cat=finance">💰 Finance</a>
   <a href="category.html?cat=ecommerce">🛒 E-Commerce</a>
-  <a href="category.html?cat=automation">🔄 Automation</a>
-  <a href="category.html?cat=cloud">☁ Cloud</a>
-  <a href="category.html?cat=education">🎓 Education</a>
-  <a href="category.html?cat=career">💼 Career</a>
-  <a href="category.html?cat=research">📊 Research</a>
-  <a href="category.html?cat=cybersecurity">🔐 Cybersecurity</a>
-  <a href="category.html?cat=web3">⛓ Web3</a>
-  <a href="category.html?cat=analytics">📈 Analytics</a>
-  <a href="category.html?cat=utilities">🧰 Utilities</a>
-  <a href="category.html?cat=no-code">🧠 No-Code</a>
-  <a href="category.html?cat=collaboration">🤝 Collaboration</a>
 </div>
 
 <header class="app-header">
@@ -51,57 +34,41 @@ document.addEventListener('gesturestart', function (e) {
 
   <div class="glass-card center">
     <h2>🚀 Welcome to ToolRaja</h2>
-    <p>Explore 300+ curated AI tools, SaaS platforms and digital stacks across 20+ structured categories.</p>
+    <p>Explore curated digital tools across structured categories.</p>
   </div>
 
-  <!-- QUICK GRID -->
   <div class="quick-grid">
 
-<a href="category.html?cat=ai" class="quick-card"><div>🤖</div>AI Tools</a>
-<a href="category.html?cat=productivity" class="quick-card"><div>⚙</div>Productivity</a>
-<a href="category.html?cat=design" class="quick-card"><div>🎨</div>Design</a>
-<a href="category.html?cat=developer" class="quick-card"><div>💻</div>Developer</a>
-<a href="category.html?cat=marketing" class="quick-card"><div>📈</div>Marketing</a>
-<a href="category.html?cat=writing" class="quick-card"><div>✍</div>Writing</a>
-<a href="category.html?cat=video" class="quick-card"><div>🎬</div>Video</a>
-<a href="category.html?cat=social" class="quick-card"><div>📱</div>Social</a>
-<a href="category.html?cat=finance" class="quick-card"><div>💰</div>Finance</a>
-<a href="category.html?cat=ecommerce" class="quick-card"><div>🛒</div>E-Commerce</a>
-<a href="category.html?cat=automation" class="quick-card"><div>🔄</div>Automation</a>
-<a href="category.html?cat=cloud" class="quick-card"><div>☁</div>Cloud</a>
-<a href="category.html?cat=education" class="quick-card"><div>🎓</div>Education</a>
-<a href="category.html?cat=career" class="quick-card"><div>💼</div>Career</a>
-<a href="category.html?cat=research" class="quick-card"><div>📊</div>Research</a>
-<a href="category.html?cat=cybersecurity" class="quick-card"><div>🔐</div>Cybersecurity</a>
-<a href="category.html?cat=web3" class="quick-card"><div>⛓</div>Web3</a>
-<a href="category.html?cat=analytics" class="quick-card"><div>📊</div>Analytics</a>
-<a href="category.html?cat=utilities" class="quick-card"><div>🧰</div>Utilities</a>
-<a href="category.html?cat=nocode" class="quick-card"><div>🧠</div>No-Code</a>
-<a href="category.html?cat=collaboration" class="quick-card"><div>🤝</div>Collaboration</a>
+<a href="category.html?cat=ai-tools" class="quick-card"><span>🤖</span>AI Tools</a>
+<a href="category.html?cat=productivity" class="quick-card"><span>⚙</span>Productivity</a>
+<a href="category.html?cat=design" class="quick-card"><span>🎨</span>Design</a>
+<a href="category.html?cat=developer" class="quick-card"><span>💻</span>Developer</a>
+<a href="category.html?cat=marketing" class="quick-card"><span>📈</span>Marketing</a>
+<a href="category.html?cat=writing" class="quick-card"><span>✍</span>Writing</a>
+<a href="category.html?cat=video" class="quick-card"><span>🎬</span>Video</a>
+<a href="category.html?cat=social" class="quick-card"><span>📱</span>Social</a>
+<a href="category.html?cat=finance" class="quick-card"><span>💰</span>Finance</a>
+<a href="category.html?cat=ecommerce" class="quick-card"><span>🛒</span>E-Commerce</a>
 
 </div>
 
-  <!-- CAROUSEL -->
-  <div class="carousel-section">
-    <button class="carousel-btn" onclick="scrollCarousel(-1)">❮</button>
-    <div class="carousel-track" id="carouselTrack">
-      <a href="category.html?cat=startup" class="carousel-card">🚀 Startup Stack</a>
-      <a href="category.html?cat=creator" class="carousel-card">🎬 Creator Economy</a>
-      <a href="category.html?cat=remote" class="carousel-card">🌍 Remote Work</a>
-      <a href="category.html?cat=agents" class="carousel-card">🤖 AI Agents</a>
-      <a href="category.html?cat=devops" class="carousel-card">⚙ DevOps</a>
-      <a href="category.html?cat=data" class="carousel-card">📊 Data Science</a>
-      <a href="category.html?cat=saas" class="carousel-card">💻 SaaS</a>
-      <a href="category.html?cat=ui" class="carousel-card">🎨 UI Libraries</a>
-      <a href="category.html?cat=growth" class="carousel-card">📈 Growth Stack</a>
-      <a href="category.html?cat=security" class="carousel-card">🔐 Security</a>
+  <div class="carousel-wrapper">
+    <div class="carousel-container">
+      <button class="carousel-btn left" onclick="scrollCarousel(-1)">❮</button>
+      <div class="carousel-track" id="carouselTrack">
+        <a href="category.html?cat=ai-tools" class="carousel-card">🤖 AI Stack</a>
+        <a href="category.html?cat=developer" class="carousel-card">💻 Dev Stack</a>
+        <a href="category.html?cat=marketing" class="carousel-card">📈 Growth Stack</a>
+        <a href="category.html?cat=design" class="carousel-card">🎨 UI Stack</a>
+        <a href="category.html?cat=productivity" class="carousel-card">⚙ Work Stack</a>
+      </div>
+      <button class="carousel-btn right" onclick="scrollCarousel(1)">❯</button>
     </div>
-    <button class="carousel-btn" onclick="scrollCarousel(1)">❯</button>
   </div>
 
   <div class="glass-card center">
     <h3>💡 Why ToolRaja?</h3>
-    <p>ToolRaja organizes digital tools into structured ecosystems so you discover faster and choose smarter.</p>
+    <p>Structured discovery. Clean categories. Direct access.</p>
   </div>
 
 </div>
