@@ -55,8 +55,8 @@ body{
 }
 
 .glass-card{
-  margin:8px;
-  padding:20px;
+  margin:6px 8px;
+  padding:18px;
   border-radius:18px;
   border:1px solid rgba(0,255,136,.25);
   background:rgba(255,255,255,.04);
@@ -70,8 +70,8 @@ body{
 .quick-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  padding:10px;
+  gap:6px;
+  padding:6px 10px;
 }
 
 .quick-card{
