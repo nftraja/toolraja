@@ -1,109 +1,53 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;}
 
-body {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #0f172a;
-  color: #ffffff;
-  padding: 20px;
-}
+body{background:linear-gradient(135deg,#0b0b0b,#151515);color:#00ff88;overflow-x:hidden;}
 
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 20px;
-}
+.app-header{position:fixed;top:0;left:0;right:0;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;border-bottom:1px solid rgba(0,255,136,.25);backdrop-filter:blur(10px);z-index:100;}
 
-.header h1 {
-  font-size: 32px;
-}
+.menu-btn{background:none;border:none;color:#00ff88;font-size:24px;cursor:pointer;}
 
-.search-area {
-  display: flex;
-  gap: 10px;
-}
+.logo{font-weight:700;font-size:18px;}
 
-.search-area input {
-  flex: 1;
-  padding: 10px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-}
+.main-content{padding-top:80px;padding-bottom:40px;}
 
-.search-area button {
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: none;
-  cursor: pointer;
-}
+.glass-card{border:1px solid rgba(0,255,136,.25);border-radius:16px;padding:15px;margin:12px;background:rgba(255,255,255,.04);color:#fff;}
 
-.categories {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-}
+.center{text-align:center;}
 
-.category-btn {
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: none;
-  cursor: pointer;
-  background: #1e293b;
-  color: white;
-}
+.quick-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:12px;}
 
-.category-btn.active {
-  background: #6366f1;
-}
+.quick-card{border:1px solid rgba(0,255,136,.25);border-radius:14px;padding:18px;text-align:center;text-decoration:none;color:#00ff88;background:rgba(255,255,255,.03);transition:.2s;}
 
-.tools-grid {
-  display: grid;
-  gap: 20px;
-}
+.quick-card:hover{background:rgba(0,255,136,.1);}
 
-.tool-card {
-  background: #1e293b;
-  padding: 20px;
-  border-radius: 18px;
-  transition: 0.2s ease;
-}
+.carousel-section{display:flex;align-items:center;padding:12px;}
 
-.tool-card:hover {
-  transform: translateY(-3px);
-}
+.carousel-track{display:flex;gap:12px;overflow-x:auto;scroll-behavior:smooth;}
 
-.tool-card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
+.carousel-track::-webkit-scrollbar{display:none;}
 
-.tool-card p {
-  opacity: 0.8;
-  margin-bottom: 10px;
-}
+.carousel-card{min-width:220px;background:#111;border:1px solid rgba(0,255,136,.25);border-radius:14px;padding:18px;text-decoration:none;color:#00ff88;text-align:center;}
 
-.price {
-  font-size: 14px;
-  opacity: 0.7;
-  margin-bottom: 15px;
-  display: block;
-}
+.carousel-btn{background:none;border:none;color:#00ff88;font-size:20px;cursor:pointer;}
 
-.visit-btn {
-  display: inline-block;
-  padding: 8px 16px;
-  background: #6366f1;
-  color: white;
-  text-decoration: none;
-  border-radius: 8px;
-}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px;padding:12px;}
 
-.visit-btn:hover {
-  background: #4f46e5;
-}
+.tool-card{background:#111;border:1px solid rgba(0,255,136,.2);border-radius:14px;padding:14px;color:#fff;}
+
+.tool-card h3{font-size:15px;margin-bottom:6px;color:#00ff88;}
+
+.tool-card p{font-size:12px;opacity:.8;margin-bottom:10px;}
+
+.visit-btn{display:block;text-align:center;padding:6px;border-radius:10px;background:#00ff88;color:#000;text-decoration:none;font-weight:600;font-size:12px;}
+
+.drawer{position:fixed;top:0;left:-260px;width:260px;height:100%;background:#0f0f0f;border-right:1px solid rgba(0,255,136,.3);transition:.3s;padding-top:20px;z-index:200;}
+
+.drawer.active{left:0;}
+
+.drawer a{display:block;padding:10px 20px;color:#00ff88;text-decoration:none;font-size:14px;border-bottom:1px solid rgba(255,255,255,.05);}
+
+.drawer-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.6);display:none;z-index:150;}
+
+.drawer-overlay.active{display:block;}
+
+.search-input{width:100%;padding:10px;border-radius:10px;border:1px solid rgba(0,255,136,.3);background:#0f0f0f;color:#fff;}
