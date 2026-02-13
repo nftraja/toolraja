@@ -45,12 +45,12 @@ body{
 
 .logo{
   font-weight:700;
-  font-size:18px;
+  font-size:16px;
 }
 
 .main-content{
-  padding-top:60px;
-  padding-bottom:60px;
+  padding-top:70px;
+  padding-bottom:50px;
   width:100%;
 }
 
