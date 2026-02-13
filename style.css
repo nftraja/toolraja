@@ -69,8 +69,8 @@ body{
 .glass-card{
   border:1px solid rgba(0,255,136,.25);
   border-radius:20px;
-  padding:22px;
-  margin:18px;
+  padding:18px;
+  margin:10px;
   background:rgba(255,255,255,.04);
   color:#fff;
 }
