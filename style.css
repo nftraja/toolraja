@@ -58,8 +58,8 @@ body{
    MAIN
 ========================= */
 .main-content{
-  padding-top:80px;
-  padding-bottom:100px;
+  padding-top:10px;
+  padding-bottom:10px;
 }
 
 
@@ -86,8 +86,8 @@ body{
 .quick-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:14px;
-  padding:18px;
+  gap:6px;
+  padding:10px;
 }
 
 .quick-card{
@@ -104,7 +104,7 @@ body{
   color:#00ff88;
   background:rgba(255,255,255,.03);
   transition:.2s ease;
-  padding:12px;
+  padding:8px;
 }
 
 .quick-card:hover{
@@ -127,7 +127,7 @@ body{
 ========================= */
 .carousel-wrapper{
   position:relative;
-  padding:20px 18px;
+  padding:10px 15px;
 }
 
 .carousel-container{
@@ -138,7 +138,7 @@ body{
 
 .carousel-track{
   display:flex;
-  gap:16px;
+  gap:6px;
   overflow-x:auto;
   scroll-behavior:smooth;
   scrollbar-width:none;
@@ -151,7 +151,7 @@ body{
 }
 
 .carousel-card{
-  flex:0 0 240px;
+  flex:0 0 140px;
   height:120px;
   border-radius:20px;
   border:1px solid rgba(0,255,136,.25);
