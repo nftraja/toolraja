@@ -13,7 +13,7 @@
 
 <div class="drawer" id="drawer">
   <a href="index.html">🏠 Home</a>
-  <a href="category.html?cat=ai">🤖 AI Tools</a>
+  <a href="category.html?cat=ai-tools">🤖 AI Tools</a>
   <a href="category.html?cat=productivity">⚙ Productivity</a>
   <a href="category.html?cat=design">🎨 Design</a>
   <a href="category.html?cat=developer">💻 Developer</a>
@@ -32,7 +32,7 @@
   <a href="category.html?cat=web3">⛓ Web3</a>
   <a href="category.html?cat=analytics">📈 Analytics</a>
   <a href="category.html?cat=utilities">🧰 Utilities</a>
-  <a href="category.html?cat=nocode">🧠 No-Code</a>
+  <a href="category.html?cat=no-code">🧠 No-Code</a>
   <a href="category.html?cat=collaboration">🤝 Collaboration</a>
 </div>
 
@@ -118,7 +118,7 @@ function renderTools() {
 
 if (currentCategory) {
   categoryTitle.innerText =
-    currentCategory.replace("-", " ").toUpperCase();
+    currentCategory.replace(/-/g, " ").toUpperCase();
 }
 
 searchInput.addEventListener("input", renderTools);
