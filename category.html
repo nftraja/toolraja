@@ -154,15 +154,14 @@ function renderTools() {
   }
 
   toolsContainer.innerHTML = filtered.map(tool => `
-    <div class="tool-card">
-      <h3>${tool.name}</h3>
-      <p>${tool.description}</p>
-      <a href="${tool.link}" target="_blank" class="visit-btn">
-        Visit Tool
-      </a>
-    </div>
-  `).join("");
-}
+  <div class="tool-card">
+    <h3>${tool.icon || "🔹"} ${tool.name}</h3>
+    <p>${tool.description}</p>
+    <a href="${tool.link}" target="_blank" class="visit-btn">
+      Visit Tool
+    </a>
+  </div>
+`).join("");
 
 /* ===== TITLE ===== */
 if (currentCategory) {
