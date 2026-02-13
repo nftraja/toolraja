@@ -160,6 +160,17 @@ body{
   right:8px;
 }
 
+.tool-header{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:6px;
+}
+
+.tool-icon{
+  font-size:20px;
+}
+
 .tools-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
