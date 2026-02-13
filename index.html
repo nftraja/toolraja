@@ -1,26 +1,92 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>ToolRaja</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css?v=5">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolRaja – Smart Digital Tools Directory</title>
+<meta name="description" content="Discover curated AI tools, SaaS platforms, developer stacks and digital resources.">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="header">
-  <h1>ToolRaja</h1>
-  <div class="search-area">
-    <input id="search-input" type="text" placeholder="Search tools...">
-    <button id="theme-toggle">🌙</button>
-  </div>
+<div class="drawer-overlay" id="overlay"></div>
+
+<div class="drawer" id="drawer">
+  <a href="index.html">🏠 Home</a>
+  <a href="category.html?cat=ai-tools">🤖 AI Tools</a>
+  <a href="category.html?cat=productivity">⚙ Productivity</a>
+  <a href="category.html?cat=design">🎨 Design</a>
+  <a href="category.html?cat=developer">💻 Developer</a>
+  <a href="category.html?cat=marketing">📈 Marketing</a>
+  <a href="category.html?cat=writing">✍ Writing</a>
+  <a href="category.html?cat=video">🎬 Video</a>
+  <a href="category.html?cat=social">📱 Social</a>
+  <a href="category.html?cat=finance">💰 Finance</a>
+  <a href="category.html?cat=ecommerce">🛒 E-Commerce</a>
+  <a href="category.html?cat=automation">🔄 Automation</a>
+  <a href="category.html?cat=cloud">☁ Cloud</a>
+  <a href="category.html?cat=education">🎓 Education</a>
+  <a href="category.html?cat=career">💼 Career</a>
+  <a href="category.html?cat=research">📊 Research</a>
+  <a href="category.html?cat=cybersecurity">🔐 Cybersecurity</a>
+  <a href="category.html?cat=web3">⛓ Web3</a>
+  <a href="category.html?cat=analytics">📈 Analytics</a>
+  <a href="category.html?cat=utilities">🧰 Utilities</a>
+  <a href="category.html?cat=no-code">🧠 No-Code</a>
+  <a href="category.html?cat=collaboration">🤝 Collaboration</a>
+</div>
+
+<header class="app-header">
+  <button class="menu-btn" id="menuBtn">☰</button>
+  <div class="logo">ToolRaja</div>
 </header>
 
-<div id="category-container" class="categories"></div>
-<div id="tools-container" class="tools-grid"></div>
+<div class="main-content">
 
-<script src="app.js?v=5" defer></script>
+  <div class="glass-card center">
+    <h2>🚀 Welcome to ToolRaja</h2>
+    <p>Explore 300+ curated AI tools, SaaS platforms and digital stacks across 20+ structured categories.</p>
+  </div>
 
+  <!-- QUICK GRID -->
+  <div class="quick-grid">
+    <a href="category.html?cat=ai-tools" class="quick-card"><div>🤖</div><span>AI Tools</span></a>
+    <a href="category.html?cat=productivity" class="quick-card"><div>⚙</div><span>Productivity</span></a>
+    <a href="category.html?cat=design" class="quick-card"><div>🎨</div><span>Design</span></a>
+    <a href="category.html?cat=developer" class="quick-card"><div>💻</div><span>Developer</span></a>
+    <a href="category.html?cat=marketing" class="quick-card"><div>📈</div><span>Marketing</span></a>
+    <a href="category.html?cat=writing" class="quick-card"><div>✍</div><span>Writing</span></a>
+    <a href="category.html?cat=video" class="quick-card"><div>🎬</div><span>Video</span></a>
+    <a href="category.html?cat=social" class="quick-card"><div>📱</div><span>Social</span></a>
+    <a href="category.html?cat=finance" class="quick-card"><div>💰</div><span>Finance</span></a>
+  </div>
+
+  <!-- CAROUSEL -->
+  <div class="carousel-section">
+    <button class="carousel-btn" onclick="scrollCarousel(-1)">❮</button>
+    <div class="carousel-track" id="carouselTrack">
+      <a href="category.html?cat=startup" class="carousel-card">🚀 Startup Stack</a>
+      <a href="category.html?cat=creator" class="carousel-card">🎬 Creator Economy</a>
+      <a href="category.html?cat=remote" class="carousel-card">🌍 Remote Work</a>
+      <a href="category.html?cat=agents" class="carousel-card">🤖 AI Agents</a>
+      <a href="category.html?cat=devops" class="carousel-card">⚙ DevOps</a>
+      <a href="category.html?cat=data" class="carousel-card">📊 Data Science</a>
+      <a href="category.html?cat=saas" class="carousel-card">💻 SaaS</a>
+      <a href="category.html?cat=ui" class="carousel-card">🎨 UI Libraries</a>
+      <a href="category.html?cat=growth" class="carousel-card">📈 Growth Stack</a>
+      <a href="category.html?cat=security" class="carousel-card">🔐 Security</a>
+    </div>
+    <button class="carousel-btn" onclick="scrollCarousel(1)">❯</button>
+  </div>
+
+  <div class="glass-card center">
+    <h3>💡 Why ToolRaja?</h3>
+    <p>ToolRaja organizes digital tools into structured ecosystems so you discover faster and choose smarter.</p>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
 </body>
 </html>
