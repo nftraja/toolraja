@@ -85,7 +85,7 @@ body{
   justify-content:center;
   text-decoration:none;
   color:#00ff88;
-  font-size:14px;
+  font-size:13px; /* text size */
   font-weight:500;
   transition:.2s ease;
 }
@@ -95,8 +95,9 @@ body{
 }
 
 .quick-card span{
-  font-size:46px;
-  margin-bottom:6px;
+  font-size:42px !important;   /* force emoji size */
+  line-height:1;
+  margin-bottom:8px;
   display:block;
 }
 
