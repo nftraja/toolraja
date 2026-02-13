@@ -56,6 +56,36 @@
 
 </div>
 
+<!-- ✅ BOTTOM NAV ADDED HERE -->
+<nav class="bottom-nav">
+
+  <a href="index.html" class="bottom-item">
+    <span>🏠</span>
+    <small>Home</small>
+  </a>
+
+  <a href="category.html?cat=ai-tools" class="bottom-item">
+    <span>🤖</span>
+    <small>AI</small>
+  </a>
+
+  <a href="category.html?cat=developer" class="bottom-item">
+    <span>💻</span>
+    <small>Dev</small>
+  </a>
+
+  <a href="category.html?cat=marketing" class="bottom-item">
+    <span>📈</span>
+    <small>Growth</small>
+  </a>
+
+  <a href="category.html?cat=productivity" class="bottom-item">
+    <span>🧠</span>
+    <small>Tools</small>
+  </a>
+
+</nav>
+
 <script>
 
 const params = new URLSearchParams(window.location.search);
@@ -145,6 +175,7 @@ searchInput.addEventListener("input", renderTools);
 loadTools();
 
 </script>
+
 <script src="app.js"></script>
 </body>
 </html>
