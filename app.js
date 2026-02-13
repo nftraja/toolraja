@@ -1,8 +1,8 @@
 /* ===============================
-   TOOLRAJA FINAL APP.JS
+   TOOLRAJA FINAL CLEAN APP.JS
 ================================ */
 
-/* ===== Prevent Pinch Zoom Only (Safe) ===== */
+/* ===== Prevent Pinch Zoom Only ===== */
 document.addEventListener('touchmove', function (event) {
   if (event.scale && event.scale !== 1) {
     event.preventDefault();
@@ -38,7 +38,7 @@ function scrollCarousel(direction){
   const track = document.getElementById("carouselTrack");
   if(!track) return;
 
-  const scrollAmount = 260; // card width + gap
+  const scrollAmount = 260;
   track.scrollBy({
     left: direction * scrollAmount,
     behavior: "smooth"
@@ -46,69 +46,86 @@ function scrollCarousel(direction){
 }
 
 
-/* ===== Category Page Logic Safe ===== */
-if(window.location.pathname.includes("category.html")){
+/* ===============================
+   CATEGORY PAGE LOGIC (FINAL)
+================================ */
 
-  document.addEventListener("DOMContentLoaded", async function(){
+document.addEventListener("DOMContentLoaded", async function(){
 
-    const params = new URLSearchParams(window.location.search);
-    const currentCategory = params.get("cat");
+  if(!window.location.pathname.includes("category.html")) return;
 
-    const toolsContainer = document.getElementById("toolsContainer");
-    const searchInput = document.getElementById("searchInput");
-    const categoryTitle = document.getElementById("categoryTitle");
+  const params = new URLSearchParams(window.location.search);
+  let currentCategory = params.get("cat");
 
-    if(!currentCategory || !toolsContainer) return;
+  const toolsContainer = document.getElementById("toolsContainer");
+  const searchInput = document.getElementById("searchInput");
+  const categoryTitle = document.getElementById("categoryTitle");
 
-    try{
+  if(!currentCategory || !toolsContainer) return;
 
-      const res = await fetch("tools.json");
-      const allTools = await res.json();
+  /* ---- SLUG NORMALIZATION ---- */
+  const slugMap = {
+    "ai": "ai-tools",
+    "nocode": "no-code"
+  };
 
-      function renderTools(){
+  currentCategory = slugMap[currentCategory] || currentCategory;
 
-        let filtered = allTools.filter(t => t.category === currentCategory);
+  try{
 
-        const query = searchInput ? searchInput.value.toLowerCase() : "";
+    const res = await fetch("tools.json");
+    const allTools = await res.json();
 
-        if(query){
-          filtered = filtered.filter(t =>
-            t.name.toLowerCase().includes(query)
-          );
-        }
+    function renderTools(){
 
-        if(!filtered.length){
-          toolsContainer.innerHTML =
-            "<div class='glass-card'>No tools found.</div>";
-          return;
-        }
+      let filtered = allTools.filter(
+        t => t.category === currentCategory
+      );
 
-        toolsContainer.innerHTML = filtered.map(tool => `
-          <div class="tool-card">
+      const query = searchInput ? searchInput.value.toLowerCase() : "";
+
+      if(query){
+        filtered = filtered.filter(t =>
+          t.name.toLowerCase().includes(query) ||
+          t.description.toLowerCase().includes(query)
+        );
+      }
+
+      if(!filtered.length){
+        toolsContainer.innerHTML =
+          "<div class='glass-card'>No tools found.</div>";
+        return;
+      }
+
+      toolsContainer.innerHTML = filtered.map(tool => `
+        <div class="tool-card">
+          <div class="tool-header">
+            <span class="tool-icon">${tool.icon || "🧩"}</span>
             <h3>${tool.name}</h3>
-            <p>${tool.description}</p>
-            <a href="${tool.link}" target="_blank" class="visit-btn">Visit</a>
           </div>
-        `).join("");
+          <p>${tool.description}</p>
+          <a href="${tool.link}" target="_blank" class="visit-btn">
+            Visit
+          </a>
+        </div>
+      `).join("");
 
-      }
-
-      if(categoryTitle){
-        categoryTitle.innerText =
-          currentCategory.replace(/-/g," ").toUpperCase();
-      }
-
-      if(searchInput){
-        searchInput.addEventListener("input", renderTools);
-      }
-
-      renderTools();
-
-    }catch(e){
-      toolsContainer.innerHTML =
-        "<div class='glass-card'>Error loading tools.</div>";
     }
 
-  });
+    if(categoryTitle){
+      categoryTitle.innerText =
+        currentCategory.replace(/-/g," ").toUpperCase();
+    }
 
-}
+    if(searchInput){
+      searchInput.addEventListener("input", renderTools);
+    }
+
+    renderTools();
+
+  }catch(e){
+    toolsContainer.innerHTML =
+      "<div class='glass-card'>Error loading tools.</div>";
+  }
+
+});
