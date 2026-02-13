@@ -56,38 +56,30 @@
 
 </div>
 
-<!-- ✅ BOTTOM NAV ADDED HERE -->
 <nav class="bottom-nav">
-
   <a href="index.html" class="bottom-item">
     <span>🏠</span>
     <small>Home</small>
   </a>
-
   <a href="category.html?cat=ai-tools" class="bottom-item">
     <span>🤖</span>
     <small>AI</small>
   </a>
-
   <a href="category.html?cat=developer" class="bottom-item">
     <span>💻</span>
     <small>Dev</small>
   </a>
-
   <a href="category.html?cat=marketing" class="bottom-item">
     <span>📈</span>
     <small>Growth</small>
   </a>
-
   <a href="category.html?cat=productivity" class="bottom-item">
     <span>🧠</span>
     <small>Tools</small>
   </a>
-
 </nav>
 
 <script>
-
 const params = new URLSearchParams(window.location.search);
 let currentCategory = params.get("cat");
 
@@ -100,14 +92,11 @@ let allTools = [];
 /* ===== SLUG NORMALIZATION ===== */
 function normalizeSlug(slug) {
   if (!slug) return "";
-
   slug = slug.toLowerCase();
-
   const map = {
     "ai": "ai-tools",
     "nocode": "no-code"
   };
-
   return map[slug] || slug;
 }
 
@@ -154,17 +143,18 @@ function renderTools() {
   }
 
   toolsContainer.innerHTML = filtered.map(tool => `
-  <div class="tool-card">
+    <div class="tool-card">
       <div class="tool-header">
-          <span class="tool-icon">${tool.icon || "🧩"}</span>
-          <h3>${tool.name}</h3>
+        <span class="tool-icon">${tool.icon || "🧩"}</span>
+        <h3>${tool.name}</h3>
       </div>
       <p>${tool.description}</p>
       <a href="${tool.link}" target="_blank" class="visit-btn">
-          Visit
+        Visit
       </a>
-  </div>
-`).join("");
+    </div>
+  `).join("");
+}
 
 /* ===== TITLE ===== */
 if (currentCategory) {
@@ -172,10 +162,11 @@ if (currentCategory) {
     currentCategory.replace(/-/g, " ").toUpperCase();
 }
 
+/* ===== EVENTS ===== */
 searchInput.addEventListener("input", renderTools);
 
+/* ===== INIT ===== */
 loadTools();
-
 </script>
 
 <script src="app.js"></script>
