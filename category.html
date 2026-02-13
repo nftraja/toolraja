@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolRaja – Category</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="drawer-overlay" id="overlay"></div>
+<div class="drawer" id="drawer">
+  <a href="index.html">🏠 Home</a>
+</div>
+
+<header class="app-header">
+  <button class="menu-btn" id="menuBtn">☰</button>
+  <div class="logo" id="categoryTitle">Category</div>
+</header>
+
+<div class="main-content">
+
+  <div class="glass-card">
+    <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
+  </div>
+
+  <div id="toolsContainer" class="tools-grid"></div>
+
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const currentCategory = params.get("cat");
+const toolsContainer = document.getElementById("toolsContainer");
+const searchInput = document.getElementById("searchInput");
+const categoryTitle = document.getElementById("categoryTitle");
+
+let allTools = [];
+
+async function loadTools(){
+ const res = await fetch("tools.json");
+ allTools = await res.json();
+ renderTools();
+}
+
+function renderTools(){
+ let filtered = allTools.filter(t => t.category === currentCategory);
+ const query = searchInput.value.toLowerCase();
+ if(query){
+  filtered = filtered.filter(t => t.name.toLowerCase().includes(query));
+ }
+
+ if(!filtered.length){
+  toolsContainer.innerHTML = "<div class='glass-card'>No tools found.</div>";
+  return;
+ }
+
+ toolsContainer.innerHTML = filtered.map(tool => `
+  <div class="tool-card">
+   <h3>${tool.name}</h3>
+   <p>${tool.description}</p>
+   <a href="${tool.link}" target="_blank" class="visit-btn">Visit</a>
+  </div>
+ `).join("");
+}
+
+if(currentCategory){
+ categoryTitle.innerText = currentCategory.replace("-", " ").toUpperCase();
+}
+
+searchInput.addEventListener("input", renderTools);
+loadTools();
+</script>
+
+<script src="app.js"></script>
+</body>
+</html>
