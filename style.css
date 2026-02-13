@@ -49,8 +49,8 @@ body{
 }
 
 .main-content{
-  padding-top:60px;
-  padding-bottom:60px;
+  padding-top:65px;
+  padding-bottom:65px;
   width:100%;
 }
 
@@ -95,7 +95,7 @@ body{
 }
 
 .quick-card span{
-  font-size:42px !important;  
+  font-size:32px !important;  
   line-height:1;
   margin-bottom:8px;
   display:block;
