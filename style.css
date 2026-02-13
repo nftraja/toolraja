@@ -1,4 +1,3 @@
-/* ================= RESET ================= */
 *{
   margin:0;
   padding:0;
@@ -6,21 +5,14 @@
   font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 
-html{
+html,body{
   width:100%;
-}
-
-body{
-  width:100%;
-  min-height:100vh;
-  overflow-x:hidden;      /* horizontal block */
-  overflow-y:auto;        /* vertical scroll ENABLE */
+  min-height:100%;
+  overflow-x:hidden;
   background:#0b0b0b;
   color:#00ff88;
 }
 
-
-/* ================= HEADER ================= */
 .app-header{
   position:fixed;
   top:0;
@@ -41,7 +33,6 @@ body{
   border:none;
   color:#00ff88;
   font-size:26px;
-  cursor:pointer;
 }
 
 .logo{
@@ -49,15 +40,11 @@ body{
   font-size:18px;
 }
 
-
-/* ================= MAIN ================= */
 .main-content{
-  padding-top:80px;   /* header space */
-  padding-bottom:80px;
+  padding-top:80px;
+  padding-bottom:60px;
 }
 
-
-/* ================= GLASS CARD ================= */
 .glass-card{
   margin:12px;
   padding:20px;
@@ -67,12 +54,8 @@ body{
   color:#fff;
 }
 
-.center{
-  text-align:center;
-}
+.center{text-align:center;}
 
-
-/* ================= QUICK GRID ================= */
 .quick-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
@@ -92,13 +75,6 @@ body{
   text-decoration:none;
   color:#00ff88;
   font-size:14px;
-  font-weight:500;
-  padding:8px;
-  transition:0.2s ease;
-}
-
-.quick-card:hover{
-  background:rgba(0,255,136,.08);
 }
 
 .quick-card span{
@@ -106,28 +82,18 @@ body{
   margin-bottom:6px;
 }
 
+.carousel-wrapper{padding:12px;}
 
-/* ================= CAROUSEL ================= */
-.carousel-wrapper{
-  padding:12px;
-}
-
-.carousel-container{
-  position:relative;
-}
+.carousel-container{position:relative;}
 
 .carousel-track{
   display:flex;
   gap:12px;
   overflow-x:auto;
   scroll-behavior:smooth;
-  scrollbar-width:none;
-  -webkit-overflow-scrolling:touch;
 }
 
-.carousel-track::-webkit-scrollbar{
-  display:none;
-}
+.carousel-track::-webkit-scrollbar{display:none;}
 
 .carousel-card{
   flex:0 0 180px;
@@ -138,15 +104,8 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   text-decoration:none;
   color:#00ff88;
-  font-weight:500;
-  transition:0.2s ease;
-}
-
-.carousel-card:hover{
-  background:rgba(0,255,136,.08);
 }
 
 .carousel-btn{
@@ -161,19 +120,11 @@ body{
   color:#00ff88;
   font-size:18px;
   cursor:pointer;
-  z-index:10;
 }
 
-.carousel-btn.left{
-  left:5px;
-}
+.carousel-btn.left{left:5px;}
+.carousel-btn.right{right:5px;}
 
-.carousel-btn.right{
-  right:5px;
-}
-
-
-/* ================= TOOLS GRID ================= */
 .tools-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
@@ -189,18 +140,6 @@ body{
   color:#fff;
 }
 
-.tool-card h3{
-  font-size:14px;
-  margin-bottom:6px;
-  color:#00ff88;
-}
-
-.tool-card p{
-  font-size:12px;
-  margin-bottom:10px;
-  opacity:.8;
-}
-
 .visit-btn{
   display:block;
   text-align:center;
@@ -213,8 +152,6 @@ body{
   font-weight:600;
 }
 
-
-/* ================= DRAWER ================= */
 .drawer{
   position:fixed;
   top:0;
@@ -228,17 +165,13 @@ body{
   z-index:2000;
 }
 
-.drawer.active{
-  left:0;
-}
+.drawer.active{left:0;}
 
 .drawer a{
   display:block;
   padding:12px 20px;
   color:#00ff88;
   text-decoration:none;
-  font-size:14px;
-  border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .drawer-overlay{
@@ -249,17 +182,4 @@ body{
   z-index:1500;
 }
 
-.drawer-overlay.active{
-  display:block;
-}
-
-
-/* ================= SEARCH ================= */
-.search-input{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:1px solid rgba(0,255,136,.3);
-  background:#111;
-  color:#fff;
-}
+.drawer-overlay.active{display:block;}
