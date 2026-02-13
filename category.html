@@ -10,8 +10,30 @@
 <body>
 
 <div class="drawer-overlay" id="overlay"></div>
+
 <div class="drawer" id="drawer">
   <a href="index.html">🏠 Home</a>
+  <a href="category.html?cat=ai">🤖 AI Tools</a>
+  <a href="category.html?cat=productivity">⚙ Productivity</a>
+  <a href="category.html?cat=design">🎨 Design</a>
+  <a href="category.html?cat=developer">💻 Developer</a>
+  <a href="category.html?cat=marketing">📈 Marketing</a>
+  <a href="category.html?cat=writing">✍ Writing</a>
+  <a href="category.html?cat=video">🎬 Video</a>
+  <a href="category.html?cat=social">📱 Social</a>
+  <a href="category.html?cat=finance">💰 Finance</a>
+  <a href="category.html?cat=ecommerce">🛒 E-Commerce</a>
+  <a href="category.html?cat=automation">🔄 Automation</a>
+  <a href="category.html?cat=cloud">☁ Cloud</a>
+  <a href="category.html?cat=education">🎓 Education</a>
+  <a href="category.html?cat=career">💼 Career</a>
+  <a href="category.html?cat=research">📊 Research</a>
+  <a href="category.html?cat=cybersecurity">🔐 Cybersecurity</a>
+  <a href="category.html?cat=web3">⛓ Web3</a>
+  <a href="category.html?cat=analytics">📈 Analytics</a>
+  <a href="category.html?cat=utilities">🧰 Utilities</a>
+  <a href="category.html?cat=nocode">🧠 No-Code</a>
+  <a href="category.html?cat=collaboration">🤝 Collaboration</a>
 </div>
 
 <header class="app-header">
@@ -20,36 +42,91 @@
 </header>
 
 <div class="main-content">
+
+  <div class="glass-card">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="Search tools in this category..." 
+      class="search-input"
+    >
+  </div>
+
   <div id="toolsContainer" class="tools-grid"></div>
+
 </div>
 
-<script src="app.js"></script>
 <script>
+
 const params = new URLSearchParams(window.location.search);
 const currentCategory = params.get("cat");
+
 const toolsContainer = document.getElementById("toolsContainer");
+const searchInput = document.getElementById("searchInput");
 const categoryTitle = document.getElementById("categoryTitle");
 
-async function loadTools(){
- const res = await fetch("tools.json");
- const allTools = await res.json();
+let allTools = [];
 
- const filtered = allTools.filter(t => t.category === currentCategory);
-
- toolsContainer.innerHTML = filtered.map(tool => `
-  <div class="tool-card">
-   <h3>${tool.name}</h3>
-   <p>${tool.description}</p>
-   <a href="${tool.link}" target="_blank" class="visit-btn">Visit</a>
-  </div>
- `).join("");
+async function loadTools() {
+  try {
+    const res = await fetch("tools.json");
+    allTools = await res.json();
+    renderTools();
+  } catch (error) {
+    toolsContainer.innerHTML =
+      "<div class='glass-card'>Error loading tools.</div>";
+  }
 }
 
-if(currentCategory){
- categoryTitle.innerText = currentCategory.replace("-", " ").toUpperCase();
+function renderTools() {
+
+  if (!currentCategory) {
+    toolsContainer.innerHTML =
+      "<div class='glass-card'>No category selected.</div>";
+    return;
+  }
+
+  let filtered = allTools.filter(
+    tool => tool.category === currentCategory
+  );
+
+  const query = searchInput.value.toLowerCase().trim();
+
+  if (query) {
+    filtered = filtered.filter(tool =>
+      tool.name.toLowerCase().includes(query) ||
+      tool.description.toLowerCase().includes(query)
+    );
+  }
+
+  if (!filtered.length) {
+    toolsContainer.innerHTML =
+      "<div class='glass-card'>No tools found.</div>";
+    return;
+  }
+
+  toolsContainer.innerHTML = filtered.map(tool => `
+    <div class="tool-card">
+      <h3>${tool.name}</h3>
+      <p>${tool.description}</p>
+      <a href="${tool.link}" target="_blank" class="visit-btn">
+        Visit Tool
+      </a>
+    </div>
+  `).join("");
 }
+
+if (currentCategory) {
+  categoryTitle.innerText =
+    currentCategory.replace("-", " ").toUpperCase();
+}
+
+searchInput.addEventListener("input", renderTools);
 
 loadTools();
+
 </script>
+
+<script src="app.js"></script>
 </body>
 </html>
