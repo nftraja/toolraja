@@ -6,6 +6,7 @@
 <title>ToolRaja – Category</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="drawer-overlay" id="overlay"></div>
@@ -19,41 +20,21 @@
 </header>
 
 <div class="main-content">
-
-  <div class="glass-card">
-    <input type="text" id="searchInput" placeholder="Search tools..." class="search-input">
-  </div>
-
   <div id="toolsContainer" class="tools-grid"></div>
-
 </div>
 
+<script src="app.js"></script>
 <script>
 const params = new URLSearchParams(window.location.search);
 const currentCategory = params.get("cat");
 const toolsContainer = document.getElementById("toolsContainer");
-const searchInput = document.getElementById("searchInput");
 const categoryTitle = document.getElementById("categoryTitle");
-
-let allTools = [];
 
 async function loadTools(){
  const res = await fetch("tools.json");
- allTools = await res.json();
- renderTools();
-}
+ const allTools = await res.json();
 
-function renderTools(){
- let filtered = allTools.filter(t => t.category === currentCategory);
- const query = searchInput.value.toLowerCase();
- if(query){
-  filtered = filtered.filter(t => t.name.toLowerCase().includes(query));
- }
-
- if(!filtered.length){
-  toolsContainer.innerHTML = "<div class='glass-card'>No tools found.</div>";
-  return;
- }
+ const filtered = allTools.filter(t => t.category === currentCategory);
 
  toolsContainer.innerHTML = filtered.map(tool => `
   <div class="tool-card">
@@ -68,10 +49,7 @@ if(currentCategory){
  categoryTitle.innerText = currentCategory.replace("-", " ").toUpperCase();
 }
 
-searchInput.addEventListener("input", renderTools);
 loadTools();
 </script>
-
-<script src="app.js"></script>
 </body>
 </html>
