@@ -94,9 +94,10 @@ body{
   background:rgba(0,255,136,.08);
 }
 
-.quick-card div{
-  font-size:38px;
-  margin-bottom:8px;
+.quick-card span{
+  font-size:36px;
+  margin-bottom:6px;
+  display:block;
 }
 
 .carousel-wrapper{
@@ -247,8 +248,6 @@ body{
   background:#111;
   color:#ffffff;
 }
-
-/* ================= BOTTOM NAV FIX ================= */
 
 .bottom-nav{
   position:fixed;
