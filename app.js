@@ -1,9 +1,9 @@
-/* TOOLRAJA FINAL LOCKED JS – UNIVERSAL (GitHub + Cloudflare SAFE) */
+/* TOOLRAJA FINAL LOCKED JS – GITHUB + CLOUDFLARE UNIVERSAL */
 
 document.addEventListener("DOMContentLoaded", function(){
 
   /* =============================
-     Drawer Logic
+     Drawer
   ============================== */
 
   const menuBtn = document.getElementById("menuBtn");
@@ -24,13 +24,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
   /* =============================
-     CATEGORY PAGE LOGIC
-     (DOM based detection – safest)
+     CATEGORY LOGIC
   ============================== */
 
   const toolsContainer = document.getElementById("toolsContainer");
-
-  // Only run on category page
   if(!toolsContainer) return;
 
   const params = new URLSearchParams(window.location.search);
@@ -39,14 +36,18 @@ document.addEventListener("DOMContentLoaded", function(){
   const searchInput = document.getElementById("searchInput");
   const title = document.getElementById("categoryTitle");
 
-  if(!cat) {
+  if(!cat){
     toolsContainer.innerHTML =
       "<div class='glass-card'>Invalid category.</div>";
     return;
   }
 
-  // Relative path → works on GitHub + Cloudflare
-  fetch("tools.json", { cache: "no-store" })
+  // 🔥 AUTO BASE PATH DETECTION
+  const basePath = window.location.pathname.includes("/toolraja/")
+    ? "/toolraja/"
+    : "/";
+
+  fetch(basePath + "tools.json", { cache: "no-store" })
     .then(res => {
       if(!res.ok) throw new Error("tools.json not found");
       return res.json();
@@ -59,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
         if(searchInput && searchInput.value){
           const query = searchInput.value.toLowerCase();
-
           filtered = filtered.filter(t =>
             t.name.toLowerCase().includes(query) ||
             t.description.toLowerCase().includes(query)
@@ -84,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function(){
             </a>
           </div>
         `).join("");
-
       }
 
       if(title){
@@ -98,8 +97,8 @@ document.addEventListener("DOMContentLoaded", function(){
       render();
 
     })
-    .catch(error => {
-      console.error(error);
+    .catch(err=>{
+      console.error(err);
       toolsContainer.innerHTML =
         "<div class='glass-card'>Error loading tools.</div>";
     });
