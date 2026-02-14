@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ToolRaja – Category</title>
 <link rel="stylesheet" href="style.css">
 </head>
@@ -39,23 +39,25 @@
 </div>
 
 <header class="app-header">
-  <button class="menu-btn" id="menuBtn">☰</button>
+  <button class="menu-btn" id="menuBtn" aria-label="Open Menu">☰</button>
   <div class="logo" id="categoryTitle">Category</div>
 </header>
 
-<div class="main-content">
+<main class="main-content">
 
   <div class="glass-card">
+    <label for="searchInput" class="visually-hidden">Search Tools</label>
     <input 
       type="text" 
       id="searchInput"
       placeholder="Search tools..."
-      class="search-input">
+      class="search-input"
+      autocomplete="off">
   </div>
 
   <div id="toolsContainer" class="tools-grid"></div>
 
-</div>
+</main>
 
 <nav class="bottom-nav">
   <a href="index.html" class="bottom-item">
