@@ -1,4 +1,4 @@
-/* TOOLRAJA FINAL LOCKED JS */
+/* TOOLRAJA FINAL LOCKED JS – CLOUDFLARE SAFE */
 
 document.addEventListener("DOMContentLoaded", function(){
 
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
   if(window.location.pathname.includes("category.html")){
 
     const params = new URLSearchParams(window.location.search);
-    let cat = params.get("cat");
+    const cat = params.get("cat");
 
     const toolsContainer = document.getElementById("toolsContainer");
     const searchInput = document.getElementById("searchInput");
@@ -30,11 +30,16 @@ document.addEventListener("DOMContentLoaded", function(){
 
     if(!cat || !toolsContainer) return;
 
-    fetch("tools.json")
-      .then(res => res.json())
+    // ✅ ABSOLUTE PATH (Cloudflare Safe)
+    fetch("/tools.json")
+      .then(res => {
+        if(!res.ok) throw new Error("JSON not found");
+        return res.json();
+      })
       .then(data => {
 
         function render(){
+
           let filtered = data.filter(t => t.category === cat);
 
           const query = searchInput.value.toLowerCase();
@@ -59,7 +64,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 <h3>${tool.name}</h3>
               </div>
               <p>${tool.description}</p>
-              <a href="${tool.link}" target="_blank" class="visit-btn">Visit</a>
+              <a href="${tool.link}" target="_blank" rel="noopener" class="visit-btn">
+                Visit
+              </a>
             </div>
           `).join("");
 
@@ -70,9 +77,10 @@ document.addEventListener("DOMContentLoaded", function(){
         render();
 
       })
-      .catch(()=>{
+      .catch(err=>{
         toolsContainer.innerHTML =
           "<div class='glass-card'>Error loading tools.</div>";
+        console.error(err);
       });
 
   }
