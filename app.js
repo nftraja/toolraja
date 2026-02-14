@@ -1,113 +1,80 @@
-/* ===== ZOOM SAFE ===== */
-document.addEventListener('gesturestart', function (e) {
-  e.preventDefault();
-});
+/* TOOLRAJA FINAL LOCKED JS */
 
-document.addEventListener('touchmove', function (e) {
-  if (e.scale && e.scale !== 1) {
-    e.preventDefault();
-  }
-}, { passive: false });
-
-/* ===== Drawer ===== */
 document.addEventListener("DOMContentLoaded", function(){
 
+  // Drawer
   const menuBtn = document.getElementById("menuBtn");
   const drawer = document.getElementById("drawer");
   const overlay = document.getElementById("overlay");
 
   if(menuBtn && drawer && overlay){
-    menuBtn.addEventListener("click", function(){
+    menuBtn.onclick = () => {
       drawer.classList.toggle("active");
       overlay.classList.toggle("active");
-    });
-
-    overlay.addEventListener("click", function(){
+    };
+    overlay.onclick = () => {
       drawer.classList.remove("active");
       overlay.classList.remove("active");
-    });
+    };
   }
 
-});
-
-/* ===== CATEGORY LOGIC ===== */
-if(window.location.pathname.includes("category.html")){
-
-  document.addEventListener("DOMContentLoaded", async function(){
+  // Category Logic
+  if(window.location.pathname.includes("category.html")){
 
     const params = new URLSearchParams(window.location.search);
-    let currentCategory = params.get("cat");
-
-    const slugMap = {
-      "ai": "ai-tools",
-      "nocode": "no-code"
-    };
-
-    if(slugMap[currentCategory]){
-      currentCategory = slugMap[currentCategory];
-    }
+    let cat = params.get("cat");
 
     const toolsContainer = document.getElementById("toolsContainer");
     const searchInput = document.getElementById("searchInput");
-    const categoryTitle = document.getElementById("categoryTitle");
+    const title = document.getElementById("categoryTitle");
 
-    if(!currentCategory || !toolsContainer) return;
+    if(!cat || !toolsContainer) return;
 
-    try{
+    fetch("tools.json")
+      .then(res => res.json())
+      .then(data => {
 
-      const res = await fetch("./tools.json?v=5");
-      const allTools = await res.json();
+        function render(){
+          let filtered = data.filter(t => t.category === cat);
 
-      function renderTools(){
+          const query = searchInput.value.toLowerCase();
 
-        let filtered = allTools.filter(t => t.category === currentCategory);
+          if(query){
+            filtered = filtered.filter(t =>
+              t.name.toLowerCase().includes(query) ||
+              t.description.toLowerCase().includes(query)
+            );
+          }
 
-        const query = searchInput ? searchInput.value.toLowerCase() : "";
+          if(!filtered.length){
+            toolsContainer.innerHTML =
+              "<div class='glass-card'>No tools found.</div>";
+            return;
+          }
 
-        if(query){
-          filtered = filtered.filter(t =>
-            t.name.toLowerCase().includes(query) ||
-            t.description.toLowerCase().includes(query)
-          );
-        }
-
-        if(!filtered.length){
-          toolsContainer.innerHTML =
-            "<div class='glass-card'>No tools found.</div>";
-          return;
-        }
-
-        toolsContainer.innerHTML = filtered.map(tool => `
-          <div class="tool-card">
-            <div class="tool-header">
-              <span class="tool-icon">${tool.icon || "🧩"}</span>
-              <h3>${tool.name}</h3>
+          toolsContainer.innerHTML = filtered.map(tool => `
+            <div class="tool-card">
+              <div class="tool-header">
+                <span class="tool-icon">${tool.icon || "🧩"}</span>
+                <h3>${tool.name}</h3>
+              </div>
+              <p>${tool.description}</p>
+              <a href="${tool.link}" target="_blank" class="visit-btn">Visit</a>
             </div>
-            <p>${tool.description}</p>
-            <a href="${tool.link}" target="_blank" class="visit-btn">
-              Visit
-            </a>
-          </div>
-        `).join("");
+          `).join("");
 
-      }
+        }
 
-      if(categoryTitle){
-        categoryTitle.innerText =
-          currentCategory.replace(/-/g," ").toUpperCase();
-      }
+        title.innerText = cat.replace(/-/g," ").toUpperCase();
+        searchInput.addEventListener("input", render);
+        render();
 
-      if(searchInput){
-        searchInput.addEventListener("input", renderTools);
-      }
+      })
+      .catch(()=>{
+        toolsContainer.innerHTML =
+          "<div class='glass-card'>Error loading tools.</div>";
+      });
 
-      renderTools();
+  }
 
-    }catch(e){
-      toolsContainer.innerHTML =
-        "<div class='glass-card'>Error loading tools.</div>";
-    }
-
-  });
-
-}
+});
