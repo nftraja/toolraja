@@ -1,10 +1,6 @@
-/* TOOLRAJA FINAL LOCKED JS – GITHUB + CLOUDFLARE UNIVERSAL */
+/* TOOLRAJA FINAL UNIVERSAL SAFE */
 
 document.addEventListener("DOMContentLoaded", function(){
-
-  /* =============================
-     Drawer
-  ============================== */
 
   const menuBtn = document.getElementById("menuBtn");
   const drawer = document.getElementById("drawer");
@@ -22,11 +18,6 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-
-  /* =============================
-     CATEGORY LOGIC
-  ============================== */
-
   const toolsContainer = document.getElementById("toolsContainer");
   if(!toolsContainer) return;
 
@@ -36,18 +27,10 @@ document.addEventListener("DOMContentLoaded", function(){
   const searchInput = document.getElementById("searchInput");
   const title = document.getElementById("categoryTitle");
 
-  if(!cat){
-    toolsContainer.innerHTML =
-      "<div class='glass-card'>Invalid category.</div>";
-    return;
-  }
+  if(!cat) return;
 
-  // 🔥 AUTO BASE PATH DETECTION
-  const basePath = window.location.pathname.includes("/toolraja/")
-    ? "/toolraja/"
-    : "/";
-
-  fetch(basePath + "tools.json", { cache: "no-store" })
+  // ✅ RELATIVE PATH (WORKS EVERYWHERE)
+  fetch("tools.json", { cache: "no-store" })
     .then(res => {
       if(!res.ok) throw new Error("tools.json not found");
       return res.json();
@@ -59,10 +42,10 @@ document.addEventListener("DOMContentLoaded", function(){
         let filtered = data.filter(t => t.category === cat);
 
         if(searchInput && searchInput.value){
-          const query = searchInput.value.toLowerCase();
+          const q = searchInput.value.toLowerCase();
           filtered = filtered.filter(t =>
-            t.name.toLowerCase().includes(query) ||
-            t.description.toLowerCase().includes(query)
+            t.name.toLowerCase().includes(q) ||
+            t.description.toLowerCase().includes(q)
           );
         }
 
