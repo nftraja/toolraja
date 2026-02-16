@@ -348,3 +348,11 @@ body.content-scroll{
 body.content-scroll .main-content{
   padding-bottom:120px;
 }
+
+.main-content{
+  padding-bottom:120px !important;
+}
+
+.content-page{
+  padding-bottom:120px !important;
+}
