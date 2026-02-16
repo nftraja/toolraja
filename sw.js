@@ -1,4 +1,4 @@
-const CACHE_NAME = "toolraja-v2";
+const CACHE_NAME = "toolraja-v3";
 
 /* Files to cache (App Shell) */
 const ASSETS = [
@@ -65,10 +65,8 @@ self.addEventListener("fetch", event => {
 
           })
           .catch(() => {
-            // Optional fallback
-            if (event.request.mode === "navigate") {
-              return caches.match("/index.html");
-            }
+            // Safe fallback (no forced index.html redirect)
+            return caches.match(event.request);
           });
       })
   );
