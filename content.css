@@ -1,0 +1,165 @@
+:root{
+  --content-max-width: 900px;
+  --content-spacing: 24px;
+  --content-radius: 18px;
+  --content-bg: rgba(255,255,255,0.04);
+  --content-border: rgba(255,255,255,0.08);
+  --content-shadow: 0 10px 40px rgba(0,0,0,0.35);
+}
+
+/* PAGE WRAPPER */
+.content-page{
+  width:100%;
+  max-width:var(--content-max-width);
+  margin:90px auto 120px auto;
+  padding:0 18px;
+}
+
+/* UNIVERSAL CONTENT CARD */
+.content-card{
+  background:var(--content-bg);
+  backdrop-filter:blur(14px);
+  border:1px solid var(--content-border);
+  border-radius:var(--content-radius);
+  padding:28px;
+  margin-bottom:var(--content-spacing);
+  box-shadow:var(--content-shadow);
+  transition:all 0.3s ease;
+}
+
+.content-card:hover{
+  transform:translateY(-4px);
+  border-color:rgba(255,255,255,0.15);
+}
+
+/* HEADINGS */
+.content-card h1{
+  font-size:28px;
+  margin-bottom:14px;
+  font-weight:700;
+}
+
+.content-card h2{
+  font-size:20px;
+  margin-bottom:10px;
+  margin-top:10px;
+  font-weight:600;
+}
+
+.content-card h3{
+  font-size:17px;
+  margin-bottom:8px;
+  margin-top:8px;
+  font-weight:600;
+}
+
+/* TEXT */
+.content-card p{
+  font-size:15px;
+  line-height:1.7;
+  opacity:0.9;
+  margin-bottom:12px;
+}
+
+/* LISTS */
+.content-card ul{
+  padding-left:20px;
+  margin-bottom:12px;
+}
+
+.content-card li{
+  margin-bottom:6px;
+  font-size:15px;
+  opacity:0.9;
+}
+
+/* LINKS */
+.content-card a{
+  color:#6ab4ff;
+  text-decoration:none;
+  font-weight:500;
+}
+
+.content-card a:hover{
+  text-decoration:underline;
+}
+
+/* BUTTON STYLE (Future Use) */
+.content-btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:12px;
+  background:linear-gradient(135deg,#3b82f6,#6366f1);
+  color:#fff;
+  font-size:14px;
+  font-weight:600;
+  text-decoration:none;
+  margin-top:10px;
+  transition:0.3s ease;
+}
+
+.content-btn:hover{
+  transform:translateY(-2px);
+  opacity:0.9;
+}
+
+/* INFO BOX */
+.content-highlight{
+  padding:16px;
+  border-radius:14px;
+  background:rgba(59,130,246,0.1);
+  border:1px solid rgba(59,130,246,0.3);
+  margin:15px 0;
+  font-size:14px;
+}
+
+/* TABLE (Tool Comparison Ready) */
+.content-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px;
+}
+
+.content-table th,
+.content-table td{
+  padding:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  font-size:14px;
+  text-align:left;
+}
+
+.content-table th{
+  background:rgba(255,255,255,0.05);
+  font-weight:600;
+}
+
+/* BLOG META */
+.blog-meta{
+  font-size:13px;
+  opacity:0.6;
+  margin-bottom:10px;
+}
+
+/* IMAGE SUPPORT */
+.content-card img{
+  width:100%;
+  border-radius:14px;
+  margin:15px 0;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+
+  .content-page{
+    margin:80px auto 100px auto;
+  }
+
+  .content-card{
+    padding:20px;
+  }
+
+  .content-card h1{
+    font-size:22px;
+  }
+
+}
