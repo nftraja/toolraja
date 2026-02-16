@@ -1,4 +1,4 @@
-const CACHE_NAME = "toolraja-v4";
+const CACHE_NAME = "toolraja-v5";
 
 /* Files to cache (App Shell) */
 const ASSETS = [
