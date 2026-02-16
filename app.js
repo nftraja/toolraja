@@ -1,6 +1,10 @@
-/* TOOLRAJA FINAL UNIVERSAL SAFE */
+/* TOOLRAJA FINAL UNIVERSAL STABLE */
 
 document.addEventListener("DOMContentLoaded", function(){
+
+  /* =========================
+     DRAWER LOGIC (ALL PAGES)
+  ========================== */
 
   const menuBtn = document.getElementById("menuBtn");
   const drawer = document.getElementById("drawer");
@@ -18,84 +22,90 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
+  /* =========================
+     CATEGORY PAGE LOGIC ONLY
+  ========================== */
+
   const toolsContainer = document.getElementById("toolsContainer");
-  if(!toolsContainer) return;
 
-  const params = new URLSearchParams(window.location.search);
-  const cat = params.get("cat");
+  if(toolsContainer){
 
-  const searchInput = document.getElementById("searchInput");
-  const title = document.getElementById("categoryTitle");
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("cat");
 
-  if(!cat) return;
+    const searchInput = document.getElementById("searchInput");
+    const title = document.getElementById("categoryTitle");
 
-  // ✅ RELATIVE PATH (WORKS EVERYWHERE)
-  fetch("tools.json", { cache: "no-store" })
-    .then(res => {
-      if(!res.ok) throw new Error("tools.json not found");
-      return res.json();
-    })
-    .then(data => {
+    if(!cat) return;
 
-      function render(){
+    fetch("tools.json", { cache: "no-store" })
+      .then(res => {
+        if(!res.ok) throw new Error("tools.json not found");
+        return res.json();
+      })
+      .then(data => {
 
-        let filtered = data.filter(t => t.category === cat);
+        function render(){
 
-        if(searchInput && searchInput.value){
-          const q = searchInput.value.toLowerCase();
-          filtered = filtered.filter(t =>
-            t.name.toLowerCase().includes(q) ||
-            t.description.toLowerCase().includes(q)
-          );
-        }
+          let filtered = data.filter(t => t.category === cat);
 
-        if(filtered.length === 0){
-          toolsContainer.innerHTML =
-            "<div class='glass-card'>No tools found.</div>";
-          return;
-        }
+          if(searchInput && searchInput.value){
+            const q = searchInput.value.toLowerCase();
+            filtered = filtered.filter(t =>
+              t.name.toLowerCase().includes(q) ||
+              t.description.toLowerCase().includes(q)
+            );
+          }
 
-        toolsContainer.innerHTML = filtered.map(tool => `
-          <div class="tool-card">
-            <div class="tool-header">
-              <span class="tool-icon">${tool.icon || "🧩"}</span>
-              <h3>${tool.name}</h3>
+          if(filtered.length === 0){
+            toolsContainer.innerHTML =
+              "<div class='glass-card'>No tools found.</div>";
+            return;
+          }
+
+          toolsContainer.innerHTML = filtered.map(tool => `
+            <div class="tool-card">
+              <div class="tool-header">
+                <span class="tool-icon">${tool.icon || "🧩"}</span>
+                <h3>${tool.name}</h3>
+              </div>
+              <p>${tool.description}</p>
+              <a href="${tool.link}" target="_blank" rel="noopener" class="visit-btn">
+                Visit
+              </a>
             </div>
-            <p>${tool.description}</p>
-            <a href="${tool.link}" target="_blank" rel="noopener" class="visit-btn">
-              Visit
-            </a>
-          </div>
-        `).join("");
-      }
+          `).join("");
+        }
 
-      if(title){
-        title.innerText = cat.replace(/-/g," ").toUpperCase();
-      }
+        if(title){
+          title.innerText = cat.replace(/-/g," ").toUpperCase();
+        }
 
-      if(searchInput){
-        searchInput.addEventListener("input", render);
-      }
+        if(searchInput){
+          searchInput.addEventListener("input", render);
+        }
 
-      render();
+        render();
 
-    })
-    .catch(err=>{
-      console.error(err);
-      toolsContainer.innerHTML =
-        "<div class='glass-card'>Error loading tools.</div>";
-    });
+      })
+      .catch(err=>{
+        console.error(err);
+        toolsContainer.innerHTML =
+          "<div class='glass-card'>Error loading tools.</div>";
+      });
+
+  }
 
 });
+
+/* =========================
+   SERVICE WORKER
+========================== */
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
     navigator.serviceWorker.register("/sw.js")
-      .then(function () {
-        console.log("Service Worker Registered");
-      })
-      .catch(function (error) {
-        console.log("Service Worker Registration Failed:", error);
-      });
+      .then(() => console.log("Service Worker Registered"))
+      .catch(err => console.log("Service Worker Registration Failed:", err));
   });
 }
