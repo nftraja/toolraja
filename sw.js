@@ -1,6 +1,4 @@
-/* TOOLRAJA PWA SERVICE WORKER */
-/* Version bump करना हो तो यहाँ बदल देना */
-const CACHE_NAME = "toolraja-v1";
+const CACHE_NAME = "toolraja-v2";
 
 /* Files to cache (App Shell) */
 const ASSETS = [
