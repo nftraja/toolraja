@@ -136,29 +136,62 @@ document.addEventListener("DOMContentLoaded", function(){
 
 /* ================= INSTALL ================= */
 
+let deferredPrompt;
+
+/* 🔥 CAPTURE EVENT */
 window.addEventListener("beforeinstallprompt",(e)=>{
   e.preventDefault();
   deferredPrompt = e;
+
+  // 👉 OPTIONAL: button highlight (UX boost)
+  const btn = document.getElementById("installBtn");
+  if(btn){
+    btn.style.opacity = "1";
+    btn.style.filter = "brightness(1.1)";
+  }
 });
 
-/* 🔥 INSTALL BUTTON FIX */
+/* 🔥 INSTALL BUTTON FIX (UPGRADED) */
 document.addEventListener("click", function(e){
 
   const btn = e.target.closest("#installBtn");
   if(!btn) return;
 
+  // 🔥 CASE 1: real install available
   if(deferredPrompt){
+
     deferredPrompt.prompt();
 
     deferredPrompt.userChoice.then(choice=>{
       if(choice.outcome === "accepted"){
         console.log("✅ Installed");
+      }else{
+        console.log("❌ User Cancelled");
       }
+
       deferredPrompt = null;
     });
 
   }else{
-    alert("Install not available yet.\nOpen in Chrome & interact more.");
+
+    // 🔥 CASE 2: fallback (IMPORTANT FIX)
+    
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches;
+
+    if(isStandalone){
+      alert("App already installed ✅");
+      return;
+    }
+
+    // 🔥 Detect browser
+    const ua = navigator.userAgent.toLowerCase();
+
+    if(ua.includes("chrome")){
+      alert("Tap ⋮ menu → Add to Home Screen");
+    }else{
+      alert("Open this site in Chrome to install the app.");
+    }
+
   }
 
 });
