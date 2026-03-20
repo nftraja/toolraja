@@ -1,5 +1,4 @@
 :root{
-
   --bg-main:linear-gradient(135deg,#0b0b0b,#151515);
   --bg-elev-1:rgba(255,255,255,.04);
   --bg-elev-2:rgba(255,255,255,.06);
@@ -19,10 +18,10 @@
 *{
   margin:0;
   padding:0;
-  box-sizing:border-box; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 
-/* 🔥 FIXED (height हटाया) */
 html,body{
   width:100%;
   background:var(--bg-main);
@@ -112,7 +111,6 @@ html,body{
     rgba(236,72,153,.8),
     rgba(250,204,21,.7)
   );
-
   display:flex;
   align-items:center;
   justify-content:center;
@@ -123,16 +121,13 @@ html,body{
   border:1px solid rgba(255,255,255,.12);
 }
 
-/* ================= DRAWER ================= */
+/* ================= DRAWER (FINAL STABLE FIX) ================= */
 .drawer{
   position:fixed;
   top:0;
   left:-180px;
   width:180px;
-
-  /* 🔥 FULL HEIGHT FIX */
   height:100vh;
-  max-height:100vh;
 
   background:rgba(10,12,20,.95);
   backdrop-filter:blur(12px);
@@ -142,33 +137,27 @@ html,body{
 
   z-index:2000;
 
-  /* 🔥 SCROLL FIX (MAIN) */
+  /* 🔥 ONLY THIS NEEDED */
   overflow-y:auto;
   overflow-x:hidden;
 
   -webkit-overflow-scrolling:touch;
 
-  /* 🔥 IMPORTANT */
-  overscroll-behavior:contain;
-  touch-action:pan-y;
-
   border-right:1px solid var(--border-mid);
 }
 
-/* 🔥 ACTIVE */
+/* ACTIVE */
 .drawer.active{
   left:0;
 }
 
-/* 🔥 LINKS */
+/* LINKS */
 .drawer a{
   display:block;
-  padding:10px 14px; /* थोड़ा बढ़ाया ताकि click सही लगे */
-
+  padding:10px 14px;
   color:#00ff88;
   text-decoration:none;
   font-size:13px;
-
   border-bottom:1px solid var(--border-soft);
 }
 
@@ -176,35 +165,29 @@ html,body{
 .drawer-overlay{
   position:fixed;
   inset:0;
-
   background:rgba(0,0,0,.65);
-
   display:none;
   z-index:1500;
-
-  /* 🔥 TOUCH BLOCK */
-  touch-action:none;
 }
 
 .drawer-overlay.active{
   display:block;
 }
 
-/* ================= BOTTOM NAV (FINAL FIX) ================= */
-
+/* ================= BOTTOM NAV ================= */
 .bottom-nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
   height:60px;
-  background:rgba(18,22,32,.95); /* थोड़ा solid ताकि overlap साफ दिखे */
+  background:rgba(18,22,32,.95);
   backdrop-filter:blur(18px);
   border-top:1px solid var(--border-mid);
   display:flex;
   justify-content:space-around;
   align-items:center;
-  z-index:9999; /* 🔥 सबसे जरूरी fix */
+  z-index:9999;
 }
 
 .bottom-item{
@@ -226,12 +209,10 @@ html,body{
 }
 
 /* ================= BODY SAFE SPACE ================= */
-
 body{
   padding-bottom:60px;
 }
 
-/* 🔥 iPhone / modern devices safe */
 @supports(padding:max(0px)){
   body{
     padding-bottom:max(60px, env(safe-area-inset-bottom));
