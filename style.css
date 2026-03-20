@@ -84,7 +84,7 @@ html,body{
     inset 0 1px 0 rgba(255,255,255,.15);
 }
 
-/* 🔥 INTRO + INSTALL */
+/* INTRO + INSTALL */
 .glass-card .card-title{
   font-size:14px;
   font-weight:600;
@@ -104,7 +104,8 @@ html,body{
   width:100%;
   padding:8px;
   border:none;
-  border-radius:12px;  background:linear-gradient(135deg,#00ff88,#00c6ff,#ff4ecd);
+  border-radius:12px;
+  background:linear-gradient(135deg,#00ff88,#00c6ff,#ff4ecd);
   color:#000;
   font-weight:700;
   font-size:12.5px;
@@ -119,15 +120,15 @@ html,body{
   margin-bottom:7px;
 }
 
-/* desktop = 6 columns */
 @media (min-width:768px){
   .quick-grid{
     grid-template-columns:repeat(6,1fr);
   }
 }
 
-/* QUICK CARD BASE */
+/* QUICK CARD */
 .quick-card{
+  position:relative; /* 🔥 addon */
   aspect-ratio:1/1;
   border-radius:var(--radius);
   display:flex;
@@ -148,7 +149,18 @@ html,body{
   margin-bottom:6px;
 }
 
-/* 🔥 MULTICOLOR GRADIENT */
+/* 🔥 CLICK HINT ADDON */
+.quick-card::after{
+  content:"👆";
+  position:absolute;
+  bottom:6px;
+  right:6px;
+  font-size:14px;
+  opacity:.85;
+  pointer-events:none;
+}
+
+/* GRADIENTS */
 .quick-card:nth-child(10n+1){background:linear-gradient(135deg,#00c97a,#0099cc);}
 .quick-card:nth-child(10n+2){background:linear-gradient(135deg,#0099cc,#0052cc);}
 .quick-card:nth-child(10n+3){background:linear-gradient(135deg,#ff7a18,#d4145a);}
@@ -167,7 +179,8 @@ html,body{
 
 /* TOOL GRID */
 .tools-grid{
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
   gap:8px;
   padding:8px;
 }
@@ -184,7 +197,6 @@ html,body{
   transition:.25s;
 }
 
-/* 🔥 TOOL CARD HEADING FIX */
 .tool-card h3{
   color:#00ff88 !important;
 }
@@ -200,7 +212,8 @@ html,body{
 .visit-btn{
   text-align:center;
   padding:8px;
-  border-radius:10px; background:linear-gradient(135deg,#00ff88,#00c6ff);
+  border-radius:10px;
+  background:linear-gradient(135deg,#00ff88,#00c6ff);
   color:#000;
   font-size:13px;
   font-weight:600;
@@ -227,10 +240,16 @@ html,body{
   padding-top:10px;
   z-index:2000;
   overflow-y:auto;
+
+  /* 🔥 SCROLL FIX ADDON */
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+
   border-right:1px solid var(--border-mid);
 }
 
 .drawer.active{left:0;}
+
 .drawer a{
   display:block;
   padding:6px 12px;
@@ -280,7 +299,7 @@ html,body{
 
 .bottom-item span{
   font-size:18px;
-margin-bottom:5px;
+  margin-bottom:5px;
 }
 
 .bottom-item.active{
