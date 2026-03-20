@@ -79,9 +79,10 @@ html,body{
 }
 
 
-/* ================= GLASS CARD (INTRO FIX) ================= */
+/* ================= GLASS CARD UNIFIED ================= */
+
 .glass-card{
-  margin:10px; /* 🔥 tight spacing */
+  margin:10px;
   padding:18px;
 
   border-radius:var(--radius);
@@ -91,10 +92,36 @@ html,body{
 
   border:1px solid var(--border-mid);
 
-  box-shadow:
-    0 6px 18px rgba(0,0,0,.6);
+  box-shadow:0 6px 18px rgba(0,0,0,.6);
 }
 
+
+/* ===== HEADING ===== */
+.glass-card .card-title{
+  font-size:17px;
+  font-weight:700;
+
+  color:#00ff88; /* GREEN */
+
+  margin-bottom:8px;
+}
+
+
+/* ===== TEXT ===== */
+.glass-card .card-desc{
+  font-size:13.5px;
+
+  color:#ffffff; /* WHITE */
+
+  line-height:1.6;
+}
+
+
+/* ===== BUTTON ===== */
+.glass-card .btn{
+  margin-top:12px;
+  width:100%;
+}
 
 /* ================= QUICK GRID ================= */
 .quick-grid{
