@@ -2,6 +2,9 @@
 
 document.addEventListener("DOMContentLoaded", function(){
 
+  /* 🔥 FORCE RESET (IMPORTANT FIX) */
+  document.body.style.overflow = "";
+
   /* ================= DRAWER ================= */
 
   const menuBtn = document.getElementById("menuBtn");
@@ -15,7 +18,6 @@ document.addEventListener("DOMContentLoaded", function(){
       const isActive = drawer.classList.toggle("active");
       overlay.classList.toggle("active");
 
-      // 🔥 BODY LOCK (ONLY THIS — NO HEIGHT / NO POSITION)
       document.body.style.overflow = isActive ? "hidden" : "";
 
     });
@@ -25,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function(){
       drawer.classList.remove("active");
       overlay.classList.remove("active");
 
-      // 🔥 UNLOCK
       document.body.style.overflow = "";
 
     });
@@ -36,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
   if(backBtn && drawer && overlay){
     backBtn.addEventListener("click", function(e){
-      e.preventDefault(); // page change रोकना
+      e.preventDefault();
 
       drawer.classList.remove("active");
       overlay.classList.remove("active");
@@ -44,6 +45,19 @@ document.addEventListener("DOMContentLoaded", function(){
       document.body.style.overflow = "";
     });
   }
+
+  /* 🔥 DRAWER LINK FIX (CRITICAL) */
+  const drawerLinks = document.querySelectorAll(".drawer a");
+
+  drawerLinks.forEach(link => {
+    link.addEventListener("click", function(){
+
+      if(drawer) drawer.classList.remove("active");
+      if(overlay) overlay.classList.remove("active");
+
+      document.body.style.overflow = "";
+    });
+  });
 
   /* ================= CATEGORY ================= */
 
@@ -132,6 +146,20 @@ window.addEventListener("beforeinstallprompt",(e)=>{
       installApp();
     });
   }
+});
+
+/* 🔥 INSTALL FALLBACK FIX */
+document.addEventListener("click", function(e){
+
+  const btn = e.target.closest("#installBtn");
+  if(!btn) return;
+
+  if(deferredPrompt){
+    installApp();
+  }else{
+    alert("Install not available right now.\nTry opening in Chrome.");
+  }
+
 });
 
 /* 🔥 MAIN INSTALL FUNCTION */
