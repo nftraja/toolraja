@@ -1,4 +1,4 @@
-const CACHE_NAME = "toolraja-v5";
+const CACHE_NAME = "toolraja-v6"; // 🔥 version update जरूरी
 
 /* Files to cache (App Shell) */
 const ASSETS = [
@@ -13,9 +13,7 @@ const ASSETS = [
   "/icon-512.png"
 ];
 
-/* ========================= */
-/* INSTALL */
-/* ========================= */
+/* ================= INSTALL ================= */
 self.addEventListener("install", event => {
   self.skipWaiting();
   event.waitUntil(
@@ -24,9 +22,7 @@ self.addEventListener("install", event => {
   );
 });
 
-/* ========================= */
-/* ACTIVATE */
-/* ========================= */
+/* ================= ACTIVATE ================= */
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -42,16 +38,12 @@ self.addEventListener("activate", event => {
   self.clients.claim();
 });
 
-/* ========================= */
-/* FETCH */
-/* ========================= */
+/* ================= FETCH ================= */
 self.addEventListener("fetch", event => {
 
   if (event.request.method !== "GET") return;
 
-  const requestURL = new URL(event.request.url);
-
-  // Handle navigation requests properly
+  // 🔥 NAVIGATION FIX (important)
   if (event.request.mode === "navigate") {
     event.respondWith(
       fetch(event.request)
