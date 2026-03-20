@@ -4,62 +4,33 @@ document.addEventListener("DOMContentLoaded", function(){
 
   /* ================= DRAWER ================= */
 
-/* ================= DRAWER ================= */
+  const menuBtn = document.getElementById("menuBtn");
+  const drawer = document.getElementById("drawer");
+  const overlay = document.getElementById("overlay");
 
-const menuBtn = document.getElementById("menuBtn");
-const drawer = document.getElementById("drawer");
-const overlay = document.getElementById("overlay");
+  if(menuBtn && drawer && overlay){
 
-let scrollY = 0;
+    menuBtn.addEventListener("click", () => {
 
-if(menuBtn && drawer && overlay){
+      const isActive = drawer.classList.toggle("active");
+      overlay.classList.toggle("active");
 
-  menuBtn.addEventListener("click", () => {
+      // 🔥 SAFE SCROLL LOCK
+      document.body.style.overflow = isActive ? "hidden" : "";
 
-    const isActive = drawer.classList.toggle("active");
-    overlay.classList.toggle("active");
+    });
 
-    if(isActive){
+    overlay.addEventListener("click", () => {
 
-      // 🔥 SAVE SCROLL POSITION
-      scrollY = window.scrollY;
+      drawer.classList.remove("active");
+      overlay.classList.remove("active");
 
-      // 🔥 BODY LOCK (SAFE METHOD)
-      document.body.style.position = "fixed";
-      document.body.style.top = `-${scrollY}px`;
-      document.body.style.left = "0";
-      document.body.style.right = "0";
+      document.body.style.overflow = "";
 
-    }else{
+    });
+  }
 
-      // 🔥 UNLOCK
-      document.body.style.position = "";
-      document.body.style.top = "";
-      document.body.style.left = "";
-      document.body.style.right = "";
-
-      window.scrollTo(0, scrollY);
-    }
-
-  });
-
-  overlay.addEventListener("click", () => {
-
-    drawer.classList.remove("active");
-    overlay.classList.remove("active");
-
-    // 🔥 UNLOCK
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.left = "";
-    document.body.style.right = "";
-
-    window.scrollTo(0, scrollY);
-
-  });
-}
-
-  /* ================= CATEGORY PAGE LOGIC ================= */
+  /* ================= CATEGORY PAGE ================= */
 
   const toolsContainer = document.getElementById("toolsContainer");
 
@@ -73,11 +44,8 @@ if(menuBtn && drawer && overlay){
 
     if(cat){
 
-      fetch("tools.json", { cache: "no-store" })
-        .then(res => {
-          if(!res.ok) throw new Error("tools.json not found");
-          return res.json();
-        })
+      fetch("tools.json",{cache:"no-store"})
+        .then(res => res.json())
         .then(data => {
 
           function render(){
@@ -92,28 +60,20 @@ if(menuBtn && drawer && overlay){
               );
             }
 
-            if(filtered.length === 0){
-              toolsContainer.innerHTML =
-                "<div class='glass-card'>No tools found.</div>";
-              return;
-            }
-
             toolsContainer.innerHTML = filtered.map(tool => `
               <div class="tool-card">
                 <div class="tool-header">
-                  <span class="tool-icon">${tool.icon || "🧩"}</span>
+                  <span>${tool.icon || "🧩"}</span>
                   <h3>${tool.name}</h3>
                 </div>
                 <p>${tool.description}</p>
-                <a href="${tool.link}" target="_blank" rel="noopener" class="visit-btn">
-                  Visit
-                </a>
+                <a href="${tool.link}" target="_blank" class="visit-btn">Visit</a>
               </div>
             `).join("");
           }
 
           if(title){
-            title.innerText = cat.replace(/-/g," ").toUpperCase();
+            title.innerText = cat.toUpperCase();
           }
 
           if(searchInput){
@@ -122,19 +82,30 @@ if(menuBtn && drawer && overlay){
 
           render();
 
-        })
-        .catch(err=>{
-          console.error(err);
-          toolsContainer.innerHTML =
-            "<div class='glass-card'>Error loading tools.</div>";
         });
 
     }
-
   }
 
 });
 
+
+/* ================= INSTALL ================= */
+
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt",(e)=>{
+  e.preventDefault();
+  deferredPrompt=e;
+
+  const btn=document.getElementById("installBtn");
+  if(btn) btn.style.display="block";
+});
+
+function installApp(){
+  if(!deferredPrompt) return;
+  deferredPrompt.prompt();
+}
 
 /* ================= SERVICE WORKER ================= */
 
@@ -150,55 +121,17 @@ if ("serviceWorker" in navigator) {
   });
 }
 
+/* ================= ZOOM BLOCK ================= */
 
-/* ================= INSTALL PROMPT ================= */
+document.addEventListener("gesturestart",e=>e.preventDefault());
 
-let deferredPrompt;
-
-window.addEventListener("beforeinstallprompt", (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-
-  const installBtn = document.getElementById("installBtn");
-  if (installBtn) {
-    installBtn.style.display = "block";
-  }
+let lastTouchEnd=0;
+document.addEventListener("touchend",e=>{
+  const now=Date.now();
+  if(now-lastTouchEnd<=300) e.preventDefault();
+  lastTouchEnd=now;
 });
 
-function installApp(){
-  if (!deferredPrompt) return;
-
-  deferredPrompt.prompt();
-
-  deferredPrompt.userChoice.then(choice => {
-    if (choice.outcome === "accepted") {
-      console.log("App Installed");
-    }
-    deferredPrompt = null;
-  });
-}
-
-
-/* ================= ZOOM BLOCK (FINAL) ================= */
-
-// 🔥 Pinch zoom block
-document.addEventListener("gesturestart", function (e) {
-  e.preventDefault();
-});
-
-// 🔥 Double tap zoom block
-let lastTouchEnd = 0;
-document.addEventListener("touchend", function (event) {
-  const now = Date.now();
-  if (now - lastTouchEnd <= 300) {
-    event.preventDefault();
-  }
-  lastTouchEnd = now;
-}, false);
-
-// 🔥 Ctrl + scroll zoom block (desktop)
-document.addEventListener("wheel", function(e){
-  if(e.ctrlKey){
-    e.preventDefault();
-  }
-},{ passive:false });
+document.addEventListener("wheel",e=>{
+  if(e.ctrlKey) e.preventDefault();
+},{passive:false});
