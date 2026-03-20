@@ -1,8 +1,18 @@
 /* TOOLRAJA FINAL UNIVERSAL STABLE */
 
+let deferredPrompt;
+
+/* 🔥 SERVICE WORKER REGISTER (CRITICAL FIX) */
+if("serviceWorker" in navigator){
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("/sw.js")
+      .then(()=>console.log("✅ SW Registered"))
+      .catch(err=>console.log("SW Error", err));
+  });
+}
+
 document.addEventListener("DOMContentLoaded", function(){
 
-  /* 🔥 FORCE RESET (IMPORTANT FIX) */
   document.body.style.overflow = "";
 
   /* ================= DRAWER ================= */
@@ -32,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-  /* 🔥 DRAWER BACK BUTTON FIX */
+  /* 🔥 BACK BTN FIX */
   const backBtn = document.getElementById("drawerBackBtn");
 
   if(backBtn && drawer && overlay){
@@ -46,15 +56,11 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
-  /* 🔥 DRAWER LINK FIX (CRITICAL) */
-  const drawerLinks = document.querySelectorAll(".drawer a");
-
-  drawerLinks.forEach(link => {
-    link.addEventListener("click", function(){
-
+  /* 🔥 DRAWER LINK FIX (CRITICAL BUG FIX) */
+  document.querySelectorAll(".drawer a").forEach(link=>{
+    link.addEventListener("click",()=>{
       if(drawer) drawer.classList.remove("active");
       if(overlay) overlay.classList.remove("active");
-
       document.body.style.overflow = "";
     });
   });
@@ -130,58 +136,37 @@ document.addEventListener("DOMContentLoaded", function(){
 
 /* ================= INSTALL ================= */
 
-let deferredPrompt;
-
 window.addEventListener("beforeinstallprompt",(e)=>{
   e.preventDefault();
   deferredPrompt = e;
-
-  const installBtn = document.getElementById("installBtn");
-
-  if(installBtn){
-    installBtn.style.display = "block";
-
-    installBtn.addEventListener("click",(ev)=>{
-      ev.stopPropagation();
-      installApp();
-    });
-  }
 });
 
-/* 🔥 INSTALL FALLBACK FIX */
+/* 🔥 INSTALL BUTTON FIX */
 document.addEventListener("click", function(e){
 
   const btn = e.target.closest("#installBtn");
   if(!btn) return;
 
   if(deferredPrompt){
-    installApp();
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then(choice=>{
+      if(choice.outcome === "accepted"){
+        console.log("✅ Installed");
+      }
+      deferredPrompt = null;
+    });
+
   }else{
-    alert("Install not available right now.\nTry opening in Chrome.");
+    alert("Install not available yet.\nOpen in Chrome & interact more.");
   }
 
 });
 
-/* 🔥 MAIN INSTALL FUNCTION */
-function installApp(){
-  if(!deferredPrompt) return;
-
-  deferredPrompt.prompt();
-
-  deferredPrompt.userChoice.then(choice=>{
-    if(choice.outcome === "accepted"){
-      console.log("✅ App Installed");
-    }
-    deferredPrompt = null;
-  });
-}
-
 /* ================= ZOOM BLOCK ================= */
 
-// pinch zoom block
 document.addEventListener("gesturestart",e=>e.preventDefault());
 
-// double tap zoom block
 let lastTouchEnd=0;
 document.addEventListener("touchend",e=>{
   const now=Date.now();
@@ -189,7 +174,6 @@ document.addEventListener("touchend",e=>{
   lastTouchEnd=now;
 });
 
-// ctrl + scroll zoom block
 document.addEventListener("wheel",e=>{
   if(e.ctrlKey) e.preventDefault();
 },{passive:false});
