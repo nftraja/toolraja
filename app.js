@@ -15,8 +15,13 @@ document.addEventListener("DOMContentLoaded", function(){
       const isActive = drawer.classList.toggle("active");
       overlay.classList.toggle("active");
 
-      // 🔥 SAFE SCROLL LOCK
+      // 🔥 BODY SCROLL LOCK (SAFE)
       document.body.style.overflow = isActive ? "hidden" : "";
+      document.body.style.height = isActive ? "100vh" : "";
+
+      // 🔥 FORCE DRAWER SCROLL FIX (IMPORTANT)
+      drawer.style.overflowY = "auto";
+      drawer.style.webkitOverflowScrolling = "touch";
 
     });
 
@@ -25,10 +30,14 @@ document.addEventListener("DOMContentLoaded", function(){
       drawer.classList.remove("active");
       overlay.classList.remove("active");
 
+      // 🔥 UNLOCK BODY
       document.body.style.overflow = "";
+      document.body.style.height = "";
 
     });
   }
+
+});
 
   /* ================= CATEGORY PAGE ================= */
 
