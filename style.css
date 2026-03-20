@@ -317,6 +317,22 @@ html,body{
   border-bottom:1px solid var(--border-soft);
 }
 
+/* 🔥 BODY LOCK (ONLY BACKGROUND FREEZE) */
+body.drawer-open{
+  overflow:hidden;
+  height:100vh;
+}
+
+
+/* 🔥 DRAWER FULL SCROLL FIX */
+.drawer{
+  height:100vh;
+  overflow-y:auto;
+
+  -webkit-overflow-scrolling:touch;
+  touch-action:pan-y;
+}
+
 .drawer a:hover{
   background:rgba(0,255,136,.08);
 }
