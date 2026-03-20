@@ -15,13 +15,8 @@ document.addEventListener("DOMContentLoaded", function(){
       const isActive = drawer.classList.toggle("active");
       overlay.classList.toggle("active");
 
-      // 🔥 BODY SCROLL LOCK (SAFE)
+      // 🔥 BODY LOCK (ONLY THIS, NO FIXED POSITION)
       document.body.style.overflow = isActive ? "hidden" : "";
-      document.body.style.height = isActive ? "100vh" : "";
-
-      // 🔥 FORCE DRAWER SCROLL FIX (IMPORTANT)
-      drawer.style.overflowY = "auto";
-      drawer.style.webkitOverflowScrolling = "touch";
 
     });
 
@@ -30,16 +25,12 @@ document.addEventListener("DOMContentLoaded", function(){
       drawer.classList.remove("active");
       overlay.classList.remove("active");
 
-      // 🔥 UNLOCK BODY
       document.body.style.overflow = "";
-      document.body.style.height = "";
 
     });
   }
 
-});
-
-  /* ================= CATEGORY PAGE ================= */
+  /* ================= CATEGORY ================= */
 
   const toolsContainer = document.getElementById("toolsContainer");
 
@@ -98,15 +89,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-
-/* ================= INSTALL ================= */
-
+/* INSTALL */
 let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt",(e)=>{
   e.preventDefault();
   deferredPrompt=e;
-
   const btn=document.getElementById("installBtn");
   if(btn) btn.style.display="block";
 });
@@ -116,22 +104,14 @@ function installApp(){
   deferredPrompt.prompt();
 }
 
-/* ================= SERVICE WORKER ================= */
-
+/* SERVICE WORKER */
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", function () {
-    navigator.serviceWorker.register("/sw.js")
-      .then(function () {
-        console.log("Service Worker Registered");
-      })
-      .catch(function (error) {
-        console.log("Service Worker Registration Failed:", error);
-      });
+    navigator.serviceWorker.register("/sw.js");
   });
 }
 
-/* ================= ZOOM BLOCK ================= */
-
+/* ZOOM BLOCK */
 document.addEventListener("gesturestart",e=>e.preventDefault());
 
 let lastTouchEnd=0;
