@@ -208,6 +208,32 @@ html,body{
   color:#00ff88;
 }
 
+/* ================= INSTALL CARD FIX ================= */
+
+.install-card{
+  cursor:pointer;
+  transition:.2s ease;
+}
+
+.install-card:active{
+  transform:scale(0.98);
+}
+
+/* BUTTON */
+.install-btn{
+  margin-top:14px;
+  width:100%;
+  padding:10px;
+  border:none;
+  border-radius:12px;
+
+  background:linear-gradient(135deg,#00ff88,#ff4ecd);
+  color:#000;
+
+  font-weight:700;
+  font-size:14px;
+}
+
 /* ================= BODY SAFE SPACE ================= */
 body{
   padding-bottom:25px;
