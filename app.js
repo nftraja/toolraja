@@ -15,13 +15,8 @@ document.addEventListener("DOMContentLoaded", function(){
       const isActive = drawer.classList.toggle("active");
       overlay.classList.toggle("active");
 
-      // 🔥 BODY LOCK (SAFE)
+      // 🔥 BODY LOCK (ONLY THIS — NO HEIGHT / NO POSITION)
       document.body.style.overflow = isActive ? "hidden" : "";
-
-      // 🔥 CRITICAL FIX (SCROLL WORK)
-      if(isActive){
-        drawer.style.touchAction = "pan-y";
-      }
 
     });
 
@@ -30,12 +25,11 @@ document.addEventListener("DOMContentLoaded", function(){
       drawer.classList.remove("active");
       overlay.classList.remove("active");
 
+      // 🔥 UNLOCK
       document.body.style.overflow = "";
 
     });
   }
-
-});
 
   /* ================= CATEGORY ================= */
 
@@ -67,6 +61,12 @@ document.addEventListener("DOMContentLoaded", function(){
               );
             }
 
+            if(filtered.length === 0){
+              toolsContainer.innerHTML =
+                "<div class='glass-card'>No tools found.</div>";
+              return;
+            }
+
             toolsContainer.innerHTML = filtered.map(tool => `
               <div class="tool-card">
                 <div class="tool-header">
@@ -89,6 +89,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
           render();
 
+        })
+        .catch(()=>{
+          toolsContainer.innerHTML =
+            "<div class='glass-card'>Error loading tools.</div>";
         });
 
     }
@@ -109,9 +113,8 @@ window.addEventListener("beforeinstallprompt",(e)=>{
   if(installBtn){
     installBtn.style.display = "block";
 
-    // 🔥 button click
     installBtn.addEventListener("click",(ev)=>{
-      ev.stopPropagation(); // card double trigger रोकने के लिए
+      ev.stopPropagation();
       installApp();
     });
   }
@@ -131,9 +134,12 @@ function installApp(){
   });
 }
 
-/* ZOOM BLOCK */
+/* ================= ZOOM BLOCK ================= */
+
+// pinch zoom block
 document.addEventListener("gesturestart",e=>e.preventDefault());
 
+// double tap zoom block
 let lastTouchEnd=0;
 document.addEventListener("touchend",e=>{
   const now=Date.now();
@@ -141,6 +147,7 @@ document.addEventListener("touchend",e=>{
   lastTouchEnd=now;
 });
 
+// ctrl + scroll zoom block
 document.addEventListener("wheel",e=>{
   if(e.ctrlKey) e.preventDefault();
 },{passive:false});
