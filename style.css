@@ -113,7 +113,7 @@ html,body{
 
 /* ================= QUICK CARD ================= */
 .quick-card{
-  aspect-ratio:1/1;
+  aspect-ratio:1.25/1;
   border-radius:var(--radius);
   /* 🔥 SOFT MIX (NO HARSH BLUE) */
   background:linear-gradient(
@@ -141,7 +141,7 @@ html,body{
 }
 
 .quick-card span{
-  font-size:26px;
+  font-size:24px;
   margin-bottom:6px;
   color:#fff;
 }
@@ -166,11 +166,11 @@ html,body{
 
 .carousel-track{
   display:flex;
-  gap:10px;
+  gap:8px;
   overflow-x:auto;
   scroll-behavior:smooth;
   scrollbar-width:none;
-  padding:0 10px;
+  padding:0 8px;
 }
 
 .carousel-track::-webkit-scrollbar{
@@ -202,8 +202,8 @@ html,body{
   position:absolute;
   top:50%;
   transform:translateY(-50%);
-  width:34px;
-  height:34px;
+  width:30px;
+  height:30px;
   border-radius:50%;
   border:none;
   background:var(--bg-elev-2);
@@ -214,8 +214,8 @@ html,body{
 /* ================= TOOL GRID ================= */
 .tools-grid{
   display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
-  gap:14px;
-  padding:10px;
+  gap:8px;
+  padding:8px;
 }
 
 .tool-card{
@@ -278,12 +278,12 @@ html,body{
 /* ================= SEARCH ================= */
 .search-input{
   width:100%;
-  padding:12px;
+  padding:10px;
   border-radius:14px;
   border:1px solid var(--border-soft);
   background:var(--bg-elev-2);
   color:#fff;
-  font-size:14px;
+  font-size:13px;
   outline:none;
 }
 
@@ -301,7 +301,7 @@ html,body{
   background:rgba(10,12,20,.95);
   backdrop-filter:blur(12px);
   transition:.35s ease;
-  padding-top:15px;
+  padding-top:10px;
   z-index:2000;
   overflow-y:auto;
   border-right:1px solid var(--border-mid);
@@ -310,7 +310,7 @@ html,body{
 .drawer.active{left:0;}
 .drawer a{
   display:block;
-  padding:10px 16px;
+  padding:6px 14px;
   color:#00ff88;
   text-decoration:none;
   font-size:13px;
@@ -337,7 +337,7 @@ html,body{
   bottom:0;
   left:0;
   right:0;
-  height:70px;
+  height:60px;
   background:rgba(18,22,32,.7);
   backdrop-filter:blur(18px);
   border-top:1px solid var(--border-mid);
@@ -358,7 +358,7 @@ html,body{
 }
 
 .bottom-item span{
-  font-size:20px;
+  font-size:18px;
   margin-bottom:4px;
 }
 
@@ -390,5 +390,5 @@ body.content-scroll{
 }
 
 .main-content{
-  padding-bottom:70px !important;
+  padding-bottom:60px !important;
 }
