@@ -111,51 +111,6 @@ html,body{
   font-size:12.5px;
 }
 
-/* 🔥 INSTALL POPUP */
-
-#installPopup{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.7);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:5000;
-}
-
-.install-box{
-  width:90%;
-  max-width:320px;
-  padding:20px;
-  border-radius:18px;
-  background:#111;
-  border:1px solid rgba(0,255,136,.3);
-  text-align:center;
-  position:relative;
-}
-
-.install-title{
-  color:#00ff88;
-  font-weight:600;
-  margin-bottom:8px;
-}
-
-.install-desc{
-  font-size:13px;
-  color:#ccc;
-  margin-bottom:15px;
-}
-
-.install-main-btn{
-  width:100%;
-  padding:10px;
-  border:none;
-  border-radius:12px;
-  background:linear-gradient(135deg,#00ff88,#00c6ff);
-  font-weight:700;
-  color:#000;
-}
-
 /* GRID */
 .quick-grid{
   display:grid;
@@ -173,7 +128,7 @@ html,body{
 
 /* QUICK CARD */
 .quick-card{
-  position:relative; /* 🔥 addon */
+  position:relative;
   aspect-ratio:1/1;
   border-radius:var(--radius);
   display:flex;
@@ -193,7 +148,6 @@ html,body{
   font-size:26px;
   margin-bottom:6px;
 }
-
 
 /* GRADIENTS */
 .quick-card:nth-child(10n+1){background:linear-gradient(135deg,#00c97a,#0099cc);}
@@ -276,7 +230,6 @@ html,body{
   z-index:2000;
   overflow-y:auto;
 
-  /* 🔥 SCROLL FIX ADDON */
   -webkit-overflow-scrolling:touch;
   touch-action:pan-y;
 
@@ -305,14 +258,6 @@ html,body{
 
 .drawer-overlay.active{
   display:block;
-}
-
-.install-close{
-  position:absolute;
-  top:8px;
-  right:10px;
-  color:#999;
-  cursor:pointer;
 }
 
 /* BOTTOM NAV */
