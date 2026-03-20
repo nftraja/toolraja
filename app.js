@@ -4,9 +4,13 @@ document.addEventListener("DOMContentLoaded", function(){
 
   /* ================= DRAWER ================= */
 
+/* ================= DRAWER ================= */
+
 const menuBtn = document.getElementById("menuBtn");
 const drawer = document.getElementById("drawer");
 const overlay = document.getElementById("overlay");
+
+let scrollY = 0;
 
 if(menuBtn && drawer && overlay){
 
@@ -15,11 +19,26 @@ if(menuBtn && drawer && overlay){
     const isActive = drawer.classList.toggle("active");
     overlay.classList.toggle("active");
 
-    // 🔥 FIXED SCROLL LOCK (CLASS BASED)
     if(isActive){
-      document.body.classList.add("drawer-open");
+
+      // 🔥 SAVE SCROLL POSITION
+      scrollY = window.scrollY;
+
+      // 🔥 BODY LOCK (SAFE METHOD)
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.left = "0";
+      document.body.style.right = "0";
+
     }else{
-      document.body.classList.remove("drawer-open");
+
+      // 🔥 UNLOCK
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.left = "";
+      document.body.style.right = "";
+
+      window.scrollTo(0, scrollY);
     }
 
   });
@@ -30,7 +49,12 @@ if(menuBtn && drawer && overlay){
     overlay.classList.remove("active");
 
     // 🔥 UNLOCK
-    document.body.classList.remove("drawer-open");
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.left = "";
+    document.body.style.right = "";
+
+    window.scrollTo(0, scrollY);
 
   });
 }
