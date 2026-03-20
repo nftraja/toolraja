@@ -1,120 +1,168 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ToolRaja – Smart Digital Tools Directory</title>
-<meta name="description" content="Discover curated AI tools, SaaS platforms, developer stacks and digital resources.">
-<link rel="stylesheet" href="/style.css">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#0e1118">
-</head>
+/* TOOLRAJA FINAL CLEAN STABLE JS */
 
-<body>
+document.addEventListener("DOMContentLoaded", function(){
 
-<div class="drawer-overlay" id="overlay"></div>
+  /* 🔥 RESET BODY LOCK */
+  document.body.style.overflow = "";
 
-<div class="drawer" id="drawer">
+  /* ================= DRAWER ================= */
 
-  <!-- 🔥 BACK BUTTON -->
-  <a href="#" id="drawerBackBtn">⬅ Back</a>
+  const menuBtn = document.getElementById("menuBtn");
+  const drawer = document.getElementById("drawer");
+  const overlay = document.getElementById("overlay");
 
-  <!-- 🔥 MAIN LINKS -->
-  <a href="/">🏠 Home</a>
-  <a href="/about.html">📄 About</a>
-  <a href="/categories.html">📚 Categories</a>
-  <a href="/contact.html">📩 Contact</a>
-  <a href="/disclaimer.html">⚠ Disclaimer</a>
-  <a href="/privacy.html">🔒 Privacy</a>
-  <a href="/sitemap.html">🗺 Sitemap</a>
-  <a href="/terms.html">📜 Terms</a>
+  function openDrawer(){
+    drawer.classList.add("active");
+    overlay.classList.add("active");
+    document.body.style.overflow = "hidden";
+  }
 
-  <!-- 🔥 NFTRaja Ecosystem -->
-  <a href="https://www.nftraja.com" target="_blank">🌐 NFTRaja</a>
-  <a href="#">📚 QBank</a>
-  <a href="#">🛍 QPick</a>
-  <a href="#">🎮 GameRaja</a>
-  <a href="#">🧒 Kidverse</a>
-  <a href="#">🎵 Inditone</a>
-  <a href="#">🎨 Artemple</a>
-  <a href="#">💄 Ladyglamour</a>
+  function closeDrawer(){
+    drawer.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.style.overflow = "";
+  }
 
-</div>
+  if(menuBtn && drawer && overlay){
+    menuBtn.addEventListener("click", openDrawer);
+    overlay.addEventListener("click", closeDrawer);
+  }
 
-<header class="app-header">
-  <button class="menu-btn" id="menuBtn">☰</button>
-  <div class="logo">ToolRaja</div>
-</header>
+  /* 🔥 BACK BUTTON FIX */
+  const backBtn = document.getElementById("drawerBackBtn");
+  if(backBtn){
+    backBtn.addEventListener("click", function(e){
+      e.preventDefault();
+      closeDrawer();
+    });
+  }
 
-<main class="main-content">
+  /* 🔥 DRAWER LINKS FIX (NO REDIRECT BUG) */
+  const drawerLinks = document.querySelectorAll(".drawer a");
 
-  <!-- INTRO CARD -->
-  <div class="glass-card">
-    <div class="card-title">🚀 Welcome to ToolRaja</div>
-    <div class="card-desc">
-      Explore curated tools across 21 structured digital categories.
-    </div>
-  </div>
+  drawerLinks.forEach(link => {
+    link.addEventListener("click", function(){
+      closeDrawer();
+      // ⚠️ IMPORTANT: navigation allow (NO preventDefault)
+    });
+  });
 
-  <div class="quick-grid">
+  /* ================= CATEGORY ================= */
 
-    <a href="/category.html?cat=ai-tools" class="quick-card"><span>🤖</span>AI Tools 👆</a>
-    <a href="/category.html?cat=productivity" class="quick-card"><span>🧠</span>Productivity 👆</a>
-    <a href="/category.html?cat=design" class="quick-card"><span>🎨</span>Design 👆</a>
-    <a href="/category.html?cat=developer" class="quick-card"><span>💻</span>Developer 👆</a>
-    <a href="/category.html?cat=marketing" class="quick-card"><span>📈</span>Marketing 👆</a>
-    <a href="/category.html?cat=writing" class="quick-card"><span>✍️</span>Writing 👆</a>
-    <a href="/category.html?cat=video" class="quick-card"><span>🎬</span>Video 👆</a>
-    <a href="/category.html?cat=social" class="quick-card"><span>📱</span>Social 👆</a>
-    <a href="/category.html?cat=finance" class="quick-card"><span>💰</span>Finance 👆</a>
-    <a href="/category.html?cat=ecommerce" class="quick-card"><span>🛒</span>E-Commerce 👆</a>
-    <a href="/category.html?cat=automation" class="quick-card"><span>🔄</span>Automation 👆</a>
-    <a href="/category.html?cat=cloud" class="quick-card"><span>☁️</span>Cloud 👆</a>
-    <a href="/category.html?cat=education" class="quick-card"><span>🎓</span>Education 👆</a>
-    <a href="/category.html?cat=career" class="quick-card"><span>💼</span>Career 👆</a>
-    <a href="/category.html?cat=research" class="quick-card"><span>📊</span>Research 👆</a>
-    <a href="/category.html?cat=cybersecurity" class="quick-card"><span>🔐</span>Cybersecurity 👆</a>
-    <a href="/category.html?cat=web3" class="quick-card"><span>⛓️</span>Web3 👆</a>
-    <a href="/category.html?cat=analytics" class="quick-card"><span>📈</span>Analytics 👆</a>
-    <a href="/category.html?cat=utilities" class="quick-card"><span>🧰</span>Utilities 👆</a>
-    <a href="/category.html?cat=no-code" class="quick-card"><span>🧠</span>No-Code 👆</a>
-    <a href="/category.html?cat=collaboration" class="quick-card"><span>🤝</span>Collaboration 👆</a>
+  const toolsContainer = document.getElementById("toolsContainer");
 
-  </div>
+  if(toolsContainer){
 
-  <!-- 🔥 INSTALL CARD (FIXED) -->
-  <div class="glass-card install-card">
-    <div class="card-title">
-      📲 Install ToolRaja App
-    </div>
-    <div class="card-desc">
-      Install ToolRaja for faster access, offline support and smooth app-like experience.
-    </div>
-    <button id="installBtn" class="install-btn">
-      🚀 Install Now
-    </button>
-  </div>
+    const params = new URLSearchParams(window.location.search);
+    const cat = params.get("cat");
 
-</main>
+    const searchInput = document.getElementById("searchInput");
+    const title = document.getElementById("categoryTitle");
 
-<nav class="bottom-nav">
-  <a href="/" class="bottom-item active">
-    <span>🏠</span><small>Home</small>
-  </a>
-  <a href="/category.html?cat=ai-tools" class="bottom-item">
-    <span>🤖</span><small>AI</small>
-  </a>
-  <a href="/category.html?cat=developer" class="bottom-item">
-    <span>💻</span><small>Dev</small>
-  </a>
-  <a href="/category.html?cat=marketing" class="bottom-item">
-    <span>📈</span><small>Growth</small>
-  </a>
-  <a href="/category.html?cat=productivity" class="bottom-item">
-    <span>🧠</span><small>Tools</small>
-  </a>
-</nav>
+    if(cat){
 
-<script src="/app.js"></script>
-</body>
-</html>
+      fetch("tools.json",{cache:"no-store"})
+        .then(res => res.json())
+        .then(data => {
+
+          function render(){
+
+            let filtered = data.filter(t => t.category === cat);
+
+            if(searchInput && searchInput.value){
+              const q = searchInput.value.toLowerCase();
+              filtered = filtered.filter(t =>
+                t.name.toLowerCase().includes(q) ||
+                t.description.toLowerCase().includes(q)
+              );
+            }
+
+            if(filtered.length === 0){
+              toolsContainer.innerHTML =
+                "<div class='glass-card'>No tools found.</div>";
+              return;
+            }
+
+            toolsContainer.innerHTML = filtered.map(tool => `
+              <div class="tool-card">
+                <div class="tool-header">
+                  <span>${tool.icon || "🧩"}</span>
+                  <h3>${tool.name}</h3>
+                </div>
+                <p>${tool.description}</p>
+                <a href="${tool.link}" target="_blank" class="visit-btn">Visit</a>
+              </div>
+            `).join("");
+          }
+
+          if(title){
+            title.innerText = cat.toUpperCase();
+          }
+
+          if(searchInput){
+            searchInput.addEventListener("input", render);
+          }
+
+          render();
+
+        })
+        .catch(()=>{
+          toolsContainer.innerHTML =
+            "<div class='glass-card'>Error loading tools.</div>";
+        });
+
+    }
+  }
+
+});
+
+/* ================= INSTALL ================= */
+
+let deferredPrompt = null;
+
+/* 🔥 CAPTURE INSTALL EVENT */
+window.addEventListener("beforeinstallprompt",(e)=>{
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+/* 🔥 INSTALL BUTTON CLICK */
+document.addEventListener("click", function(e){
+
+  const btn = e.target.closest("#installBtn");
+  if(!btn) return;
+
+  if(deferredPrompt){
+
+    deferredPrompt.prompt();
+
+    deferredPrompt.userChoice.then(choice=>{
+      if(choice.outcome === "accepted"){
+        console.log("✅ Installed");
+      }
+      deferredPrompt = null;
+    });
+
+  }else{
+    alert("Install not available yet.\nOpen in Chrome & interact more.");
+  }
+
+});
+
+/* ================= ZOOM BLOCK ================= */
+
+// pinch zoom block
+document.addEventListener("gesturestart",e=>e.preventDefault());
+
+// double tap zoom block
+let lastTouchEnd=0;
+document.addEventListener("touchend",e=>{
+  const now=Date.now();
+  if(now-lastTouchEnd<=300) e.preventDefault();
+  lastTouchEnd=now;
+});
+
+// ctrl + scroll zoom block
+document.addEventListener("wheel",e=>{
+  if(e.ctrlKey) e.preventDefault();
+},{passive:false});
