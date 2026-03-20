@@ -1,69 +1,40 @@
-const CACHE_NAME = "toolraja-v6"; // 🔥 version update जरूरी
+const CACHE_NAME = "toolraja-auto-v1";
 
-/* Files to cache (App Shell) */
-const ASSETS = [
-  "/",
-  "/index.html",
-  "/category.html",
-  "/style.css",
-  "/app.js",
-  "/tools.json",
-  "/manifest.json",
-  "/icon-192.png",
-  "/icon-512.png"
-];
-
-/* ================= INSTALL ================= */
-self.addEventListener("install", event => {
-  self.skipWaiting();
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
-  );
+self.addEventListener("install", (e) => {
+  self.skipWaiting(); // 🔥 तुरंत नया SW activate
 });
 
-/* ================= ACTIVATE ================= */
-self.addEventListener("activate", event => {
-  event.waitUntil(
+self.addEventListener("activate", (e) => {
+  e.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
         keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
+          if(key !== CACHE_NAME){
+            return caches.delete(key); // 🔥 पुराना cache delete
           }
         })
       )
     )
   );
-  self.clients.claim();
+  self.clients.claim(); // 🔥 तुरंत control ले
 });
 
-/* ================= FETCH ================= */
-self.addEventListener("fetch", event => {
+/* 🔥 NO CACHE FOR CSS & JS (IMPORTANT) */
+self.addEventListener("fetch", (e) => {
 
-  if (event.request.method !== "GET") return;
+  const url = new URL(e.request.url);
 
-  // 🔥 NAVIGATION FIX (important)
-  if (event.request.mode === "navigate") {
-    event.respondWith(
-      fetch(event.request)
-        .catch(() => caches.match("/index.html"))
-    );
+  // CSS / JS हमेशा fresh load होंगे
+  if(url.pathname.endsWith(".css") || url.pathname.endsWith(".js")){
+    e.respondWith(fetch(e.request));
     return;
   }
 
-  event.respondWith(
-    caches.match(event.request)
-      .then(cachedResponse => {
-        return cachedResponse || fetch(event.request)
-          .then(networkResponse => {
-            return caches.open(CACHE_NAME)
-              .then(cache => {
-                cache.put(event.request, networkResponse.clone());
-                return networkResponse;
-              });
-          });
-      })
+  // बाकी files cache हो सकते हैं
+  e.respondWith(
+    caches.match(e.request).then(res => {
+      return res || fetch(e.request);
+    })
   );
 
 });
