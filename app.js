@@ -89,25 +89,38 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
-/* INSTALL */
+/* ================= INSTALL ================= */
+
 let deferredPrompt;
 
 window.addEventListener("beforeinstallprompt",(e)=>{
   e.preventDefault();
-  deferredPrompt=e;
-  const btn=document.getElementById("installBtn");
-  if(btn) btn.style.display="block";
+  deferredPrompt = e;
+
+  const installBtn = document.getElementById("installBtn");
+
+  if(installBtn){
+    installBtn.style.display = "block";
+
+    // 🔥 button click
+    installBtn.addEventListener("click",(ev)=>{
+      ev.stopPropagation(); // card double trigger रोकने के लिए
+      installApp();
+    });
+  }
 });
 
+/* 🔥 MAIN INSTALL FUNCTION */
 function installApp(){
   if(!deferredPrompt) return;
-  deferredPrompt.prompt();
-}
 
-/* SERVICE WORKER */
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("/sw.js");
+  deferredPrompt.prompt();
+
+  deferredPrompt.userChoice.then(choice=>{
+    if(choice.outcome === "accepted"){
+      console.log("✅ App Installed");
+    }
+    deferredPrompt = null;
   });
 }
 
