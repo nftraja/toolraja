@@ -9,14 +9,32 @@ document.addEventListener("DOMContentLoaded", function(){
   const overlay = document.getElementById("overlay");
 
   if(menuBtn && drawer && overlay){
+
     menuBtn.addEventListener("click", () => {
-      drawer.classList.toggle("active");
+
+      const isActive = drawer.classList.toggle("active");
       overlay.classList.toggle("active");
+
+      // 🔥 SCROLL LOCK
+      if(isActive){
+        document.body.style.overflow = "hidden";
+        document.body.style.height = "100vh";
+      }else{
+        document.body.style.overflow = "";
+        document.body.style.height = "";
+      }
+
     });
 
     overlay.addEventListener("click", () => {
+
       drawer.classList.remove("active");
       overlay.classList.remove("active");
+
+      // 🔥 SCROLL UNLOCK
+      document.body.style.overflow = "";
+      document.body.style.height = "";
+
     });
   }
 
@@ -24,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function(){
 
   const toolsContainer = document.getElementById("toolsContainer");
 
-  // अगर category page नहीं है तो नीचे वाला logic skip होगा
   if(toolsContainer){
 
     const params = new URLSearchParams(window.location.search);
@@ -97,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 });
 
+
 /* ================= SERVICE WORKER ================= */
 
 if ("serviceWorker" in navigator) {
@@ -110,6 +128,7 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
 
 /* ================= INSTALL PROMPT ================= */
 
@@ -137,3 +156,28 @@ function installApp(){
     deferredPrompt = null;
   });
 }
+
+
+/* ================= ZOOM BLOCK (FINAL) ================= */
+
+// 🔥 Pinch zoom block
+document.addEventListener("gesturestart", function (e) {
+  e.preventDefault();
+});
+
+// 🔥 Double tap zoom block
+let lastTouchEnd = 0;
+document.addEventListener("touchend", function (event) {
+  const now = Date.now();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
+
+// 🔥 Ctrl + scroll zoom block (desktop)
+document.addEventListener("wheel", function(e){
+  if(e.ctrlKey){
+    e.preventDefault();
+  }
+},{ passive:false });
