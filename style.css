@@ -67,14 +67,14 @@ html,body{
 
 /* MAIN */
 .main-content{
-  padding-top:70px;
-  padding-bottom:120px;
+  padding-top:60px;
+  padding-bottom:60px;
 }
 
 /* GLASS */
 .glass-card{
-  margin:10px;
-  padding:18px;
+  margin:8px;
+  padding:20px;
   border-radius:var(--radius);
   background:rgba(255,255,255,.04);
   backdrop-filter:blur(10px);
@@ -100,7 +100,7 @@ html,body{
 
 /* INSTALL BUTTON */
 .install-btn{
-  margin-top:12px;
+  margin-top:8px;
   width:100%;
   padding:10px;
   border:none;
@@ -115,8 +115,15 @@ html,body{
 .quick-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:10px;
-  padding:10px;
+  gap:7px;
+  padding:8px;
+}
+
+/* desktop = 6 columns */
+@media (min-width:768px){
+  .quick-grid{
+    grid-template-columns:repeat(6,1fr);
+  }
 }
 
 /* QUICK CARD BASE */
@@ -137,7 +144,7 @@ html,body{
 }
 
 .quick-card span{
-  font-size:28px;
+  font-size:26px;
   margin-bottom:6px;
 }
 
@@ -160,10 +167,9 @@ html,body{
 
 /* TOOL GRID */
 .tools-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
-  gap:12px;
-  padding:12px;
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
+  gap:7px;
+  padding:8px;
 }
 
 .tool-card{
@@ -183,9 +189,9 @@ html,body{
   box-shadow:var(--shadow-hover);
 }
 
+./* 🔥 TOOL CARD HEADING FIX */
 .tool-card h3{
-  font-size:14px;
-  color:#fff;
+  color:#00ff88 !important;
 }
 
 .tool-card p{
@@ -206,27 +212,17 @@ html,body{
   text-decoration:none;
 }
 
-/* SEARCH */
-.search-input{
-  width:100%;
-  padding:12px;
-  border-radius:14px;
-  border:1px solid var(--border-soft);
-  background:var(--bg-elev-2);
-  color:#fff;
-}
-
 /* DRAWER */
 .drawer{
   position:fixed;
   top:0;
-  left:-260px;
-  width:260px;
+  left:-160px;
+  width:160px;
   height:100vh;
   background:rgba(10,12,20,.96);
   backdrop-filter:blur(12px);
   transition:.3s ease;
-  padding-top:60px;
+  padding-top:10px;
   z-index:2000;
   overflow-y:auto;
   border-right:1px solid var(--border-mid);
@@ -236,7 +232,7 @@ html,body{
 
 .drawer a{
   display:block;
-  padding:12px 16px;
+  padding:6px 12px;
   color:var(--accent);
   font-size:13px;
   text-decoration:none;
@@ -278,11 +274,12 @@ html,body{
   align-items:center;
   text-decoration:none;
   color:#66ffb3;
-  font-size:11px;
+  font-size:12px;
 }
 
 .bottom-item span{
   font-size:18px;
+margin-top:5px;
 }
 
 .bottom-item.active{
@@ -291,11 +288,11 @@ html,body{
 
 /* SAFE */
 body{
-  padding-bottom:70px;
+  padding-bottom:30px;
 }
 
 @supports(padding:max(0px)){
   body{
-    padding-bottom:max(70px, env(safe-area-inset-bottom));
+    padding-bottom:max(30px, env(safe-area-inset-bottom));
   }
 }
