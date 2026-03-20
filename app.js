@@ -110,3 +110,30 @@ if ("serviceWorker" in navigator) {
       });
   });
 }
+
+/* ================= INSTALL PROMPT ================= */
+
+let deferredPrompt;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+
+  const installBtn = document.getElementById("installBtn");
+  if (installBtn) {
+    installBtn.style.display = "block";
+  }
+});
+
+function installApp(){
+  if (!deferredPrompt) return;
+
+  deferredPrompt.prompt();
+
+  deferredPrompt.userChoice.then(choice => {
+    if (choice.outcome === "accepted") {
+      console.log("App Installed");
+    }
+    deferredPrompt = null;
+  });
+}
