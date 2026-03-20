@@ -90,8 +90,8 @@ html,body{
 
 /* ================= MAIN ================= */
 .main-content{
-  padding-top:70px;
-  padding-bottom:120px;
+  padding-top:40px;
+  padding-bottom:40px;
 }
 
 
@@ -245,8 +245,8 @@ html,body{
 .drawer{
   position:fixed;
   top:0;
-  left:-260px;
-  width:260px;
+  left:-160px;
+  width:160px;
   height:100%;
   background:rgba(10,12,20,.95);
   backdrop-filter:blur(12px);
@@ -261,7 +261,7 @@ html,body{
 
 .drawer a{
   display:block;
-  padding:14px 22px;
+  padding:10px 18px;
   color:#00ff88;
   text-decoration:none;
   font-size:14px;
@@ -285,7 +285,7 @@ html,body{
   bottom:0;
   left:0;
   right:0;
-  height:70px;
+  height:75px;
   background:rgba(18,22,32,.7);
   backdrop-filter:blur(18px);
   border-top:1px solid var(--border-mid);
