@@ -4,39 +4,36 @@ document.addEventListener("DOMContentLoaded", function(){
 
   /* ================= DRAWER ================= */
 
-  const menuBtn = document.getElementById("menuBtn");
-  const drawer = document.getElementById("drawer");
-  const overlay = document.getElementById("overlay");
+const menuBtn = document.getElementById("menuBtn");
+const drawer = document.getElementById("drawer");
+const overlay = document.getElementById("overlay");
 
-  if(menuBtn && drawer && overlay){
+if(menuBtn && drawer && overlay){
 
-    menuBtn.addEventListener("click", () => {
+  menuBtn.addEventListener("click", () => {
 
-      const isActive = drawer.classList.toggle("active");
-      overlay.classList.toggle("active");
+    const isActive = drawer.classList.toggle("active");
+    overlay.classList.toggle("active");
 
-      // 🔥 SCROLL LOCK
-      if(isActive){
-        document.body.style.overflow = "hidden";
-        document.body.style.height = "100vh";
-      }else{
-        document.body.style.overflow = "";
-        document.body.style.height = "";
-      }
+    // 🔥 FIXED SCROLL LOCK (CLASS BASED)
+    if(isActive){
+      document.body.classList.add("drawer-open");
+    }else{
+      document.body.classList.remove("drawer-open");
+    }
 
-    });
+  });
 
-    overlay.addEventListener("click", () => {
+  overlay.addEventListener("click", () => {
 
-      drawer.classList.remove("active");
-      overlay.classList.remove("active");
+    drawer.classList.remove("active");
+    overlay.classList.remove("active");
 
-      // 🔥 SCROLL UNLOCK
-      document.body.style.overflow = "";
-      document.body.style.height = "";
+    // 🔥 UNLOCK
+    document.body.classList.remove("drawer-open");
 
-    });
-  }
+  });
+}
 
   /* ================= CATEGORY PAGE LOGIC ================= */
 
