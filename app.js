@@ -15,8 +15,13 @@ document.addEventListener("DOMContentLoaded", function(){
       const isActive = drawer.classList.toggle("active");
       overlay.classList.toggle("active");
 
-      // 🔥 BODY LOCK (ONLY THIS, NO FIXED POSITION)
+      // 🔥 BODY LOCK (SAFE)
       document.body.style.overflow = isActive ? "hidden" : "";
+
+      // 🔥 CRITICAL FIX (SCROLL WORK)
+      if(isActive){
+        drawer.style.touchAction = "pan-y";
+      }
 
     });
 
@@ -29,6 +34,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
     });
   }
+
+});
 
   /* ================= CATEGORY ================= */
 
