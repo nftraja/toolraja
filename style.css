@@ -4,16 +4,12 @@
   --bg-elev-1:rgba(255,255,255,.04);
   --bg-elev-2:rgba(255,255,255,.06);
   --bg-elev-3:rgba(255,255,255,.08);
-
   --border-soft:rgba(0,255,136,.15);
   --border-mid:rgba(0,255,136,.25);
   --border-strong:rgba(0,255,136,.4);
-
   --text-primary:#ffffff;
   --text-secondary:#b9b1a8;
-
   --accent:#00ff88;
-
   --radius:20px;
   --shadow-soft:0 8px 30px rgba(0,0,0,.45);
   --shadow-hover:0 14px 40px rgba(0,0,0,.6);
@@ -23,8 +19,7 @@
 *{
   margin:0;
   padding:0;
-  box-sizing:border-box;
-  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  box-sizing:border-box; font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
 }
 
 /* 🔥 FIXED (height हटाया) */
@@ -111,7 +106,6 @@ html,body{
 .quick-card{
   aspect-ratio:1.25/1;
   border-radius:var(--radius);
-
   background:linear-gradient(
     135deg,
     rgba(34,197,94,.85),
@@ -123,10 +117,8 @@ html,body{
   align-items:center;
   justify-content:center;
   flex-direction:column;
-
   color:#fff;
   text-decoration:none;
-
   box-shadow:0 6px 18px rgba(0,0,0,.6);
   border:1px solid rgba(255,255,255,.12);
 }
@@ -138,20 +130,15 @@ html,body{
   left:-180px;
   width:180px;
   height:100vh;
-
   background:rgba(10,12,20,.95);
   backdrop-filter:blur(12px);
-
   transition:.3s ease;
   padding-top:10px;
   z-index:2000;
-
   overflow-y:auto;
   overflow-x:hidden;
-
   -webkit-overflow-scrolling:touch;
   touch-action:pan-y;
-
   border-right:1px solid var(--border-mid);
 }
 
@@ -181,26 +168,50 @@ html,body{
   display:block;
 }
 
-/* ================= BOTTOM NAV ================= */
+/* ================= BOTTOM NAV (FINAL FIX) ================= */
+
 .bottom-nav{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
   height:60px;
-  background:rgba(18,22,32,.7);
+  background:rgba(18,22,32,.95); /* थोड़ा solid ताकि overlap साफ दिखे */
   backdrop-filter:blur(18px);
   border-top:1px solid var(--border-mid);
   display:flex;
   justify-content:space-around;
   align-items:center;
+  z-index:9999; /* 🔥 सबसे जरूरी fix */
 }
 
 .bottom-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-decoration:none;
   color:var(--text-secondary);
   font-size:11px;
 }
 
+.bottom-item span{
+  font-size:18px;
+  margin-bottom:3px;
+}
+
 .bottom-item.active{
   color:#00ff88;
+}
+
+/* ================= BODY SAFE SPACE ================= */
+
+body{
+  padding-bottom:60px;
+}
+
+/* 🔥 iPhone / modern devices safe */
+@supports(padding:max(0px)){
+  body{
+    padding-bottom:max(60px, env(safe-area-inset-bottom));
+  }
 }
