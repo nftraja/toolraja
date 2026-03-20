@@ -14,7 +14,7 @@
   --accent:#00ff88;
 
   --radius:20px;
-  --shadow-soft:0 8px 30px rgba(0,0,0,.45);
+  --shadow-soft:0 8px 20px rgba(0,0,0,.45);
   --shadow-hover:0 14px 40px rgba(0,0,0,.6);
 }
 
@@ -104,8 +104,7 @@ html,body{
   width:100%;
   padding:10px;
   border:none;
-  border-radius:12px;
-  background:linear-gradient(135deg,#00ff88,#00c6ff,#ff4ecd);
+  border-radius:12px;  background:linear-gradient(135deg,#00ff88,#00c6ff,#ff4ecd);
   color:#000;
   font-weight:700;
   font-size:13px;
@@ -115,8 +114,9 @@ html,body{
 .quick-grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:7px;
-  padding:8px;
+  gap:8px;
+  padding:10px;
+  margin-bottom:10px;
 }
 
 /* desktop = 6 columns */
@@ -161,32 +161,27 @@ html,body{
 .quick-card:nth-child(10n+10){background:linear-gradient(135deg,#26c6da,#512da8);}
 
 .quick-card:hover{
-  transform:translateY(-4px) scale(1.02);
-  box-shadow:var(--shadow-hover);
+  transform:translateY(-2px) scale(1.01);
+  box-shadow:0 10px 22px rgba(0,0,0,.5);
 }
 
 /* TOOL GRID */
 .tools-grid{
   display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr));
-  gap:7px;
+  gap:8px;
   padding:8px;
 }
 
 .tool-card{
   background:rgba(255,255,255,.04);
   border-radius:var(--radius);
-  padding:16px;
+  padding:20px;
   border:1px solid var(--border-soft);
   box-shadow:var(--shadow-soft);
   display:flex;
   flex-direction:column;
   justify-content:space-between;
   transition:.25s;
-}
-
-.tool-card:hover{
-  transform:translateY(-4px);
-  box-shadow:var(--shadow-hover);
 }
 
 ./* 🔥 TOOL CARD HEADING FIX */
@@ -198,6 +193,7 @@ html,body{
   font-size:13px;
   color:#e6e6e6;
   margin:8px 0;
+  line-height:1.5;
 }
 
 /* BUTTON */
@@ -210,14 +206,21 @@ html,body{
   font-size:13px;
   font-weight:600;
   text-decoration:none;
+  transition:.2s ease;
+}
+
+.visit-btn:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.08);
+  box-shadow:0 6px 16px rgba(0,0,0,.4);
 }
 
 /* DRAWER */
 .drawer{
   position:fixed;
   top:0;
-  left:-160px;
-  width:160px;
+  left:-170px;
+  width:170px;
   height:100vh;
   background:rgba(10,12,20,.96);
   backdrop-filter:blur(12px);
@@ -229,7 +232,6 @@ html,body{
 }
 
 .drawer.active{left:0;}
-
 .drawer a{
   display:block;
   padding:6px 12px;
@@ -288,11 +290,11 @@ margin-top:5px;
 
 /* SAFE */
 body{
-  padding-bottom:30px;
+  padding-bottom:40px;
 }
 
 @supports(padding:max(0px)){
   body{
-    padding-bottom:max(30px, env(safe-area-inset-bottom));
+    padding-bottom:max(40px, env(safe-area-inset-bottom));
   }
 }
