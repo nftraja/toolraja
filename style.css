@@ -99,6 +99,7 @@ html,body{
 
 /* INSTALL BUTTON */
 .install-btn{
+  cursor:pointer;
   margin-top:8px;
   width:100%;
   padding:8px;
