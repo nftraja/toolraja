@@ -31,6 +31,20 @@ document.addEventListener("DOMContentLoaded", function(){
     });
   }
 
+  /* 🔥 DRAWER BACK BUTTON FIX */
+  const backBtn = document.getElementById("drawerBackBtn");
+
+  if(backBtn && drawer && overlay){
+    backBtn.addEventListener("click", function(e){
+      e.preventDefault(); // page change रोकना
+
+      drawer.classList.remove("active");
+      overlay.classList.remove("active");
+
+      document.body.style.overflow = "";
+    });
+  }
+
   /* ================= CATEGORY ================= */
 
   const toolsContainer = document.getElementById("toolsContainer");
