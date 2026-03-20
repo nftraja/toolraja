@@ -67,8 +67,7 @@ html,body{
 
 /* MAIN */
 .main-content{
-  padding-top:50px;
-  padding-bottom:50px;
+  padding:65px 10px 65px;
 }
 
 /* GLASS */
@@ -149,16 +148,6 @@ html,body{
   margin-bottom:6px;
 }
 
-/* 🔥 CLICK HINT ADDON */
-.quick-card::after{
-  content:"👆";
-  position:absolute;
-  bottom:6px;
-  right:6px;
-  font-size:14px;
-  opacity:.85;
-  pointer-events:none;
-}
 
 /* GRADIENTS */
 .quick-card:nth-child(10n+1){background:linear-gradient(135deg,#00c97a,#0099cc);}
